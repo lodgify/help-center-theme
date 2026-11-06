@@ -36,13 +36,18 @@
           <span class="hc-tag" data-count="{{article_count}}">{{article_count}} articles</span>
         </div>
         <ul class="hc-section-card__list">
+          {{#each sections}}
+          <li>
+            <a class="is-section" href="{{url}}"><svg class="hc-icon hc-icon--sm hc-section-card__folder" aria-hidden="true"><use href="#icon-folder"/></svg><span>{{name}}</span><svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-angle-right"/></svg></a>
+          </li>
+          {{/each}}
           {{#each articles}}
           <li>
             <a href="{{url}}"><span>{{title}}</span><svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-angle-right"/></svg></a>
           </li>
           {{/each}}
         </ul>
-        <a class="hc-more" href="{{url}}">See all {{article_count}} articles
+        <a class="hc-more" href="{{url}}" data-see-all>See all {{article_count}} articles
           <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
         </a>
       </article>

@@ -13,14 +13,14 @@
           "type": "text",
           "description": "Use cases link",
           "label": "Use cases URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://help.lodgify.com/hc/sections/19978306595996"
         },
         {
           "identifier": "academy_url",
           "type": "text",
           "description": "Lodgify Academy link",
           "label": "Lodgify Academy URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://academy.lodgify.com/"
         },
         {
           "identifier": "contact_url",
@@ -34,7 +34,7 @@
           "type": "text",
           "description": "System status link",
           "label": "System status URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://status.lodgify.com/"
         }
       ]
     },
@@ -53,35 +53,35 @@
           "type": "text",
           "description": "Blog link",
           "label": "Blog URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://www.lodgify.com/blog/"
         },
         {
           "identifier": "changelog_url",
           "type": "text",
-          "description": "Changelog link",
-          "label": "Changelog URL",
-          "value": "https://www.lodgify.com"
+          "description": "Announcements link",
+          "label": "Announcements URL",
+          "value": "https://updates.lodgify.com/announcements"
         },
         {
           "identifier": "terms_url",
           "type": "text",
           "description": "Terms of service link",
           "label": "Terms of service URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://www.lodgify.com/terms/"
         },
         {
           "identifier": "privacy_url",
           "type": "text",
           "description": "Privacy policy link",
           "label": "Privacy policy URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://www.lodgify.com/privacy/"
         },
         {
           "identifier": "cookies_url",
           "type": "text",
           "description": "Cookie policy link",
           "label": "Cookie policy URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://www.lodgify.com/cookie-policy/"
         }
       ]
     },
@@ -128,7 +128,7 @@
           "type": "text",
           "description": "Sign-in page link, empty to hide",
           "label": "Sign-in page URL",
-          "value": "https://www.lodgify.com"
+          "value": "https://app.lodgify.com/login/"
         }
       ]
     }

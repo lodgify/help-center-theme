@@ -109,6 +109,24 @@
     setIcon(qs('svg', n), iconFor(n.getAttribute('data-cat-id'), n.getAttribute('data-cat-name')));
   });
 
+  /* ---------- Section cards: count sub-sections and articles ---------- */
+  qsa('.hc-section-card').forEach(function (card) {
+    var tag = qs('[data-count]', card);
+    var articles = parseInt(tag ? tag.getAttribute('data-count') : '0', 10) || 0;
+    var subs = qsa('.hc-section-card__list a.is-section', card).length;
+    var parts = [];
+    if (subs) parts.push(subs + (subs === 1 ? ' section' : ' sections'));
+    if (articles) parts.push(articles + (articles === 1 ? ' article' : ' articles'));
+    if (tag) {
+      if (parts.length) tag.textContent = parts.join(' \u00b7 ');
+      else tag.remove();
+    }
+    var more = qs('[data-see-all]', card);
+    if (more && !articles) more.firstChild.textContent = 'Open section ';
+    var list = qs('.hc-section-card__list', card);
+    if (list && !qs('li', list)) list.remove();
+  });
+
   /* ---------- Home: popular search shortcuts ---------- */
   var popular = qs('[data-popular]');
   if (popular) {
