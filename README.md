@@ -30,7 +30,7 @@ Set these in Guide > Customize design > (this theme) > Settings.
 
 **Links**: Use cases, Lodgify Academy, Contact us, System status. An empty link hides that item. "Contact us" must point to the Contact us article.
 
-**Footer**: website, blog, changelog and legal links.
+**Footer**: website, blog, announcements and legal links.
 
 **Sign-in help form**: form ID, field IDs, ticket subject and sign-in page URL (see below).
 

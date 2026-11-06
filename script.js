@@ -113,6 +113,8 @@
    * Zendesk doesn't give sub-sections of a card in the template,
    * so they're loaded here and added at the top of each card. */
   function updateCard(card) {
+  /* ---------- Section cards: count sub-sections and articles ---------- */
+  qsa('.hc-section-card').forEach(function (card) {
     var tag = qs('[data-count]', card);
     var articles = parseInt(tag ? tag.getAttribute('data-count') : '0', 10) || 0;
     var subs = qsa('.hc-section-card__list a.is-section', card).length;
@@ -171,6 +173,14 @@
       }).catch(function () { /* sub-sections are optional */ });
     }
   }
+      if (parts.length) tag.textContent = parts.join(' \u00b7 ');
+      else tag.remove();
+    }
+    var more = qs('[data-see-all]', card);
+    if (more && !articles) more.firstChild.textContent = 'Open section ';
+    var list = qs('.hc-section-card__list', card);
+    if (list && !qs('li', list)) list.remove();
+  });
 
   /* ---------- Home: popular search shortcuts ---------- */
   var popular = qs('[data-popular]');
@@ -538,7 +548,7 @@
         op.value = o.value;
         if (String(field.value) === String(o.value)) op.selected = true;
         input.appendChild(op);
-      });
+      }); 
     } else if (type === 'textarea') {
       input = el('textarea', 'hc-input hc-textarea');
       input.rows = 4;
