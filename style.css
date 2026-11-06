@@ -477,6 +477,9 @@ body.hc-menu-open { overflow: hidden; }
 }
 .hc-section-card__list a .hc-icon { color: var(--fg-subtle); }
 .hc-section-card .hc-more { margin-top: auto; }
+.hc-section-card__list a.is-section { justify-content: flex-start; gap: 10px; font-weight: 600; }
+.hc-section-card__list a.is-section span { flex: 1 1 auto; }
+.hc-section-card__list .hc-section-card__folder { color: var(--fg); }
 .hc-subsections { display: flex; flex-direction: column; gap: 16px; }
 .hc-subsections + .hc-layout__head { margin-top: 32px; }
 
