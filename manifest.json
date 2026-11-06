@@ -6,46 +6,6 @@
   "default_locale": "en-us",
   "settings": [
     {
-      "label": "Home page",
-      "variables": [
-        {
-          "identifier": "hero_title",
-          "type": "text",
-          "description": "Main heading of the home page",
-          "label": "Hero heading",
-          "value": "Lodgify Help Center"
-        },
-        {
-          "identifier": "hero_tagline",
-          "type": "text",
-          "description": "Line under the heading, empty to hide",
-          "label": "Hero tagline",
-          "value": "Find answers. Get back to hosting."
-        },
-        {
-          "identifier": "hero_subtitle",
-          "type": "text",
-          "description": "Text under the tagline",
-          "label": "Hero subtitle",
-          "value": "Step-by-step Lodgify guides for your website, bookings, payments and channel connections."
-        },
-        {
-          "identifier": "search_placeholder",
-          "type": "text",
-          "description": "Placeholder in search boxes",
-          "label": "Search placeholder",
-          "value": "Search for articles, for example: connect Airbnb"
-        },
-        {
-          "identifier": "popular_searches",
-          "type": "text",
-          "description": "Comma-separated searches, empty to hide",
-          "label": "Popular searches",
-          "value": "Connect to Airbnb, Payment gateways, iCal sync, Dynamic pricing, Website builder"
-        }
-      ]
-    },
-    {
       "label": "Links",
       "variables": [
         {

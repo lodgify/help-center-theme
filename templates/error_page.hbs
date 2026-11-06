@@ -4,7 +4,7 @@
     <h1 class="hc-display hc-display--xl">We can't find that page</h1>
     <p class="hc-band__lead">The page may have moved or no longer exists. Try searching, or go back to the Help Center home.</p>
     <div class="hc-search-wrap hc-search-wrap--band hc-search-wrap--wide">
-      {{search class='hc-search hc-search--band' placeholder=settings.search_placeholder}}
+      {{search class='hc-search hc-search--band' placeholder=(dc 'search_placeholder')}}
     </div>
     <a class="hc-btn hc-btn--primary" href="{{page_path 'help_center'}}">Back to the Help Center</a>
   </div>
