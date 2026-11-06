@@ -109,6 +109,69 @@
     setIcon(qs('svg', n), iconFor(n.getAttribute('data-cat-id'), n.getAttribute('data-cat-name')));
   });
 
+  /* ---------- Section cards: sub-sections and counts ----------
+   * Zendesk doesn't give sub-sections of a card in the template,
+   * so they're loaded here and added at the top of each card. */
+  function updateCard(card) {
+    var tag = qs('[data-count]', card);
+    var articles = parseInt(tag ? tag.getAttribute('data-count') : '0', 10) || 0;
+    var subs = qsa('.hc-section-card__list a.is-section', card).length;
+    var parts = [];
+    if (subs) parts.push(subs + (subs === 1 ? ' section' : ' sections'));
+    if (articles) parts.push(articles + (articles === 1 ? ' article' : ' articles'));
+    if (tag) {
+      tag.hidden = !parts.length;
+      if (parts.length) tag.textContent = parts.join(' \u00b7 ');
+    }
+    var more = qs('[data-see-all]', card);
+    if (more && !articles) more.firstChild.textContent = 'Open section ';
+    if (more && articles === 1) more.firstChild.textContent = 'See 1 article ';
+  }
+  var sectionCards = qsa('.hc-section-card[data-section-id]');
+  if (sectionCards.length) {
+    sectionCards.forEach(updateCard);
+    var catNode = qs('[data-current-category]');
+    var secNode = qs('[data-current-section]');
+    var catIdPromise = catNode
+      ? Promise.resolve(catNode.getAttribute('data-current-category'))
+      : secNode
+        ? getJSON('/sections/' + secNode.getAttribute('data-current-section') + '.json').then(function (s) { return s.section.category_id; })
+        : null;
+    if (catIdPromise) {
+      catIdPromise.then(function (catId) {
+        return getJSON('/categories/' + catId + '/sections.json?per_page=100');
+      }).then(function (data) {
+        var byParent = {};
+        (data.sections || []).forEach(function (s) {
+          if (!s.parent_section_id) return;
+          (byParent[s.parent_section_id] = byParent[s.parent_section_id] || []).push(s);
+        });
+        sectionCards.forEach(function (card) {
+          var children = byParent[card.getAttribute('data-section-id')] || [];
+          if (!children.length) return;
+          var list = qs('.hc-section-card__list', card);
+          if (!list) {
+            list = el('ul', 'hc-section-card__list');
+            var head = qs('.hc-section-card__head', card);
+            head.parentNode.insertBefore(list, head.nextSibling);
+          }
+          var first = list.firstChild;
+          children.forEach(function (s) {
+            var li = el('li');
+            var a = el('a', 'is-section');
+            a.href = s.html_url;
+            a.appendChild(icon('folder', 'hc-icon--sm hc-section-card__folder'));
+            a.appendChild(el('span', '', s.name));
+            a.appendChild(icon('angle-right', 'hc-icon--sm'));
+            li.appendChild(a);
+            list.insertBefore(li, first);
+          });
+          updateCard(card);
+        });
+      }).catch(function () { /* sub-sections are optional */ });
+    }
+  }
+
   /* ---------- Home: popular search shortcuts ---------- */
   var popular = qs('[data-popular]');
   if (popular) {
