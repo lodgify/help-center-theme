@@ -67,7 +67,7 @@
         <p class="hc-lead">Every area of Lodgify, organized the way you work.</p>
       </div>
     </div>
-    <div class="hc-topics">
+    <div class="hc-topics" data-use-cases-url="{{settings.use_cases_url}}">
       {{#each categories}}
       {{#each sections}}
       <a class="hc-topic" href="{{url}}">
@@ -83,6 +83,21 @@
       {{/each}}
     </div>
   </section>
+  <script>
+    /* Use cases has its own card above, so leave it out of the topics. */
+    (function () {
+      var grid = document.querySelector('[data-use-cases-url]');
+      if (!grid) return;
+      var idMatch = (grid.getAttribute('data-use-cases-url') || '').match(/\/(?:sections|categories)\/(\d+)/);
+      var useCasesId = idMatch ? idMatch[1] : null;
+      Array.prototype.forEach.call(grid.querySelectorAll('.hc-topic'), function (topic) {
+        var link = topic.getAttribute('href') || '';
+        var name = (topic.querySelector('h3') || {}).textContent || '';
+        var sameId = useCasesId && new RegExp('/(sections|categories)/' + useCasesId + '(\\D|$)').test(link);
+        if (sameId || /^\s*use cases\s*$/i.test(name)) topic.remove();
+      });
+    })();
+  </script>
 
   {{#if promoted_articles}}
   <section class="hc-block hc-block--split" aria-labelledby="popular">
