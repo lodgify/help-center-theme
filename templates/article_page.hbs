@@ -1,7 +1,10 @@
-<div class="hc-container hc-crumbs-wrap">
+<div class="hc-container hc-crumbs-wrap hc-crumbs-wrap--search">
   <nav aria-label="Breadcrumb">
     {{breadcrumbs}}
   </nav>
+  <div class="hc-search-wrap hc-search-wrap--band hc-search-wrap--article">
+    {{search class='hc-search hc-search--band' placeholder=(dc 'search_placeholder')}}
+  </div>
 </div>
 
 <main class="hc-layout hc-layout--article hc-container">
