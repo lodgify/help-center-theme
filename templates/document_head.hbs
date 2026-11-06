@@ -1,0 +1,143 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSHZ4R4P4Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CSHZ4R4P4Z');
+</script>
+<!-- End Google tag -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+<link rel="preload" href="{{asset 'RLAqva-Bold.ttf'}}" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face {
+  font-family: 'RL Aqva';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('{{asset 'RLAqva-Regular.ttf'}}') format('truetype');
+}
+@font-face {
+  font-family: 'RL Aqva';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('{{asset 'RLAqva-Bold.ttf'}}') format('truetype');
+}
+</style>
+<script>
+  /* Old article redirects: old article ID -> new article ID.
+     Add new pairs to the list. Chains (A -> B -> C) go straight to the last article. */
+  (function () {
+    var redirects = {
+      "360012218519": "360012230060",
+      "360012218299": "360012230060",
+      "360012230060": "360012109633",
+      "360012231219": "360012109633",
+      "360014546739": "360002852574",
+      "360012230459": "360012109633",
+      "360012126200": "360012109633",
+      "360012126420": "360012109633",
+      "360012218479": "360012109633",
+      "360015917579": "360012109633",
+      "360015917359": "360014152053",
+      "360002852434": "360002852574",
+      "360012230260": "360002852574",
+      "360012230080": "360002852574",
+      "360012344659": "360002852574",
+      "360012144640": "360002852574",
+      "360004094594": "360002880753",
+      "360004127173": "360002852914",
+      "360004095034": "360002880473",
+      "360004094314": "360002880693",
+      "360004094434": "360002853234",
+      "360004094914": "360002880313",
+      "360010557439": "360020450133",
+      "360025017213": "360002853234",
+      "360017054179": "360002880893",
+      "360007407819": "360007421359",
+      "360003133674": "360017190420",
+      "360021727719": "360017190420",
+      "4575716719004": "360023468853",
+      "360018932679": "360021652499",
+      "360020018739": "360021652499",
+      "360015928859": "360014543300",
+      "360016033239": "360014543300",
+      "360018535579": "360002880853",
+      "360002880673": "360021652499",
+      "360012126600": "360012109633",
+      "360002852834": "360015913419",
+      "360005763633": "360002880573",
+      "360004127053": "360002880593",
+      "360007566013": "360002852334",
+      "360012126880": "360012109633",
+      "360012203339": "360012109633",
+      "360002880333": "360002852234",
+      "360020450133": "360018696193",
+      "360008314539": "21094192692380",
+      "19986428391196": "6107461880092",
+      "15641876407068": "15314126507548",
+      "360010429293": "360003732993",
+      "360023468853": "20832566347676",
+      "4497806885404": "360017190420",
+      "360002853274": "360012109633",
+      "360014428060": "360018498079",
+      "360012288259": "360018498079",
+      "24351563885084": "360012185840",
+      "24184629311516": "360019453439",
+      "24186286574876": "360019453439",
+      "360016358880": "24186286574876",
+      "6325793111324": "24186286574876",
+      "4409624315794": "24351563885084",
+      "24188322226332": "360019570120",
+      "24186497155740": "360016269460",
+      "24188638908316": "360013613860",
+      "360013614080": "360016269460",
+      "360019554779": "360013613860",
+      "360019506360": "360012185840",
+      "25899998434588": "360010559439",
+      "25179980349212": "21094192692380",
+      "25695664875420": "360002880653",
+      "29079427534492": "17525171364764",
+      "24286432803740": "360019751759",
+      "360021652499": "360019751759",
+      "29058920660508": "26045300168220",
+      "28441059626268": "24202461227164",
+      "28806765513628": "360010606119",
+      "24628557546524": "360019401894",
+      "28815989832604": "20832566347676",
+      "27583255905180": "27582612887580",
+      "26529199668252": "20962482354460",
+      "24204054234652": "21669529691420",
+      "28814526128028": "28812264375708",
+      "25868216962972": "360010558559",
+      "360021627739": "31068088334876"
+    };
+    var match = window.location.pathname.match(/^\/hc\/([a-z]{2}(?:-[a-z]{2})?)\/articles\/(\d+)/i);
+    if (!match) return;
+    var target = match[2], hops = 0;
+    while (redirects[target] && hops < 10) { target = redirects[target]; hops++; }
+    if (target !== match[2]) {
+      window.location.replace('/hc/' + match[1] + '/articles/' + target + window.location.hash);
+    }
+  })();
+</script>
+<script>
+  /* The request form only opens from a link with the sign-in help form ID,
+     for example /hc/en-us/requests/new?ticket_form_id=FORM_ID.
+     Any other visit to /requests/new goes to the Contact us link. */
+  (function () {
+    var formId = '{{settings.signin_form_id}}';
+    var contactUrl = '{{settings.contact_url}}';
+    if (!formId || !contactUrl) return;
+    if (!/^\/hc\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?requests\/new\/?$/i.test(window.location.pathname)) return;
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('ticket_form_id') !== formId) window.location.replace(contactUrl);
+  })();
+</script>

@@ -1,0 +1,89 @@
+<div class="hc-container hc-crumbs-wrap">
+  <nav aria-label="Breadcrumb">
+    {{breadcrumbs}}
+  </nav>
+</div>
+
+<main class="hc-layout hc-layout--article hc-container">
+  <nav class="hc-sidenav hc-desk-only" aria-label="Articles in this section">
+    <h2 class="hc-eyebrow">In this section</h2>
+    <ul class="hc-sidenav__list">
+      {{#each section.articles}}
+      <li>
+        <a href="{{url}}" class="hc-sidenav__link hc-sidenav__link--text {{#is id ../article.id}}is-current{{/is}}" {{#is id ../article.id}}aria-current="page"{{/is}}>{{title}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    <a class="hc-more hc-more--side" href="{{section.url}}">See all articles in this section</a>
+  </nav>
+
+  <article class="hc-article" id="hc-article">
+    {{#with article}}
+    <header class="hc-article__head">
+      <h1 class="hc-article__title">{{title}}</h1>
+      <div class="hc-article__meta">
+        <div class="hc-author">
+          <span class="hc-author__avatar" aria-hidden="true">
+            <svg viewBox="0 0 14.711 20" width="12" height="16" focusable="false"><use href="#logo-mark"/></svg>
+          </span>
+          <span class="hc-author__text">
+            <span class="hc-author__name">Lodgify Resources Team</span>
+            <span class="hc-author__date">Updated {{date edited_at format='relative'}}</span>
+          </span>
+        </div>
+        <div class="hc-article__tools">
+          <button type="button" class="hc-btn hc-btn--ghost hc-btn--sm" data-copy-link>
+            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-link"/></svg><span data-copy-label>Copy link</span>
+          </button>
+          <button type="button" class="hc-btn hc-btn--ghost hc-btn--sm" data-print>
+            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-print"/></svg>Print
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="hc-article-body" id="hc-article-body">
+      {{body}}
+    </div>
+
+
+    <section class="hc-helpful" aria-labelledby="helpful">
+      <div class="hc-helpful__text">
+        <h2 id="helpful">Was this article helpful?</h2>
+        <small class="hc-helpful__count">{{vote 'label' class='article-vote-label'}}</small>
+      </div>
+      <div class="hc-helpful__controls" role="radiogroup">
+        {{vote 'up' role='radio' class='hc-vote hc-vote--up'}}
+        {{vote 'down' role='radio' class='hc-vote hc-vote--down'}}
+      </div>
+    </section>
+    {{/with}}
+
+    {{#if section.articles}}
+    <section class="hc-related" aria-labelledby="related">
+      <h2 class="hc-h3" id="related">More in this section</h2>
+      <ul class="hc-related__grid" data-related>
+        {{#each section.articles}}
+        {{#is id ../article.id}}{{else}}
+        <li>
+          <a href="{{url}}"><span>{{title}}</span><svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+        </li>
+        {{/is}}
+        {{/each}}
+      </ul>
+    </section>
+    {{/if}}
+  </article>
+
+  <aside class="hc-toc-aside" aria-label="On this page">
+    <div class="hc-toc" data-toc hidden>
+      <h2 class="hc-eyebrow">On this page</h2>
+      <ul class="hc-toc__list" data-toc-list></ul>
+    </div>
+    <div class="hc-help-card">
+      <svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-comment-question"/></svg>
+      <p>Need more help?</p>
+      <a class="hc-btn hc-btn--primary hc-btn--sm" href="{{settings.contact_url}}">Contact us</a>
+    </div>
+  </aside>
+</main>

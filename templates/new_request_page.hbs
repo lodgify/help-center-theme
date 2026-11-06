@@ -1,0 +1,63 @@
+<div class="hc-container hc-band-wrap">
+  <section class="hc-band hc-band--stack">
+    <nav aria-label="Breadcrumb">
+      <ol class="hc-crumbs">
+        <li><a href="{{page_path 'help_center'}}">Help Center</a><svg class="hc-icon hc-icon--sm hc-crumbs__sep" aria-hidden="true"><use href="#icon-angle-right"/></svg></li>
+        <li><span aria-current="page">Get help signing in</span></li>
+      </ol>
+    </nav>
+    <div class="hc-band__title">
+      <span class="hc-band__icon" aria-hidden="true"><svg class="hc-icon hc-icon--xl"><use href="#icon-lock"/></svg></span>
+      <h1 class="hc-display hc-display--xl">Get help signing in</h1>
+    </div>
+    <p class="hc-band__lead">Can't access your Lodgify account? Tell us what's happening and our team will help you get back in.</p>
+  </section>
+</div>
+
+<main class="hc-layout hc-container" id="main-content">
+  <div class="hc-layout__main">
+    <div class="hc-form-card">
+      <div id="hc-request-form"
+           data-request-form
+           data-form-id="{{settings.signin_form_id}}"
+           data-issue-field="{{settings.signin_issue_field_id}}"
+           data-email-field="{{settings.signin_email_field_id}}"
+           data-phone-field="{{settings.signin_phone_field_id}}"
+           data-subject-prefix="{{settings.signin_subject_prefix}}">
+        <noscript>
+          <p class="hc-alert">This form needs JavaScript. Turn it on in your browser, or <a href="{{settings.contact_url}}">see other ways to contact us</a>.</p>
+        </noscript>
+      </div>
+
+      {{!-- Short explanation under each issue card. The keys match the option tags of the Issue type field. --}}
+      <div hidden data-option-hints>
+        <span data-option="password_help" data-icon="lock">{{dc 'cfforgotpassword_hint'}}</span>
+        <span data-option="2fa_help" data-icon="shield-exclamation">{{dc 'cf2fa_hint'}}</span>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hc-request-aside" aria-label="Before you send a request">
+    {{#if settings.signin_url}}
+    <div class="hc-request-card hc-request-card--accent">
+      <svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-key-skeleton"/></svg>
+      <h2 class="hc-request-card__title">Try resetting your password first</h2>
+      <p>You can set a new password from the Lodgify sign-in page in a few minutes.</p>
+      <a class="hc-btn hc-btn--primary hc-btn--sm" href="{{settings.signin_url}}">Go to sign-in page
+        <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-external-link"/></svg>
+      </a>
+    </div>
+    {{/if}}
+    <div class="hc-request-card">
+      <h2 class="hc-request-card__title hc-request-card__title--sm">Need help with something else?</h2>
+      <p>This form is only for sign-in problems. For anything else, see how to contact us.</p>
+      <a class="hc-more" href="{{settings.contact_url}}">Contact us
+        <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+      </a>
+    </div>
+  </aside>
+</main>
+
+<script>
+  window.HC_NEW_REQUEST_FORM = {{json new_request_form}};
+</script>

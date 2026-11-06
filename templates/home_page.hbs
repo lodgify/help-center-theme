@@ -1,0 +1,133 @@
+<div class="hc-hero-frame">
+  <section class="hc-hero" id="hc-hero">
+    <div class="hc-hero__mark" aria-hidden="true">
+      <svg viewBox="0 0 14.711 20" width="412" height="560" focusable="false"><use href="#logo-mark"/></svg>
+    </div>
+    <div class="hc-hero__body hc-container">
+      <h1 class="hc-hero__title">{{settings.hero_title}}</h1>
+      {{#if settings.hero_tagline}}<p class="hc-hero__tagline">{{settings.hero_tagline}}</p>{{/if}}
+      <p class="hc-hero__subtitle">{{settings.hero_subtitle}}</p>
+      <div class="hc-search-wrap hc-search-wrap--hero">
+        {{search class='hc-search hc-search--hero' placeholder=settings.search_placeholder}}
+      </div>
+      {{#if settings.popular_searches}}
+      <div class="hc-hero__popular" data-popular="{{settings.popular_searches}}">
+        <span>Popular:</span>
+      </div>
+      {{/if}}
+    </div>
+  </section>
+</div>
+<script>
+  /* Move the header into the dark hero so both share one rounded block. */
+  (function () {
+    var hero = document.getElementById('hc-hero');
+    var header = document.getElementById('hc-header');
+    if (hero && header) {
+      hero.insertBefore(header, hero.firstChild);
+      header.classList.add('is-dark');
+    }
+  })();
+</script>
+
+<div class="hc-quick hc-container">
+  <div class="hc-quick__grid">
+    <a class="hc-quick__card" href="#topics">
+      <span class="hc-quick__top">
+        <span class="hc-quick__icon"><svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-book-open"/></svg></span>
+        <span class="hc-quick__arrow"><svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></span>
+      </span>
+      <h2>Knowledge base</h2>
+      <p>Find quick answers to your questions about every Lodgify feature.</p>
+    </a>
+    {{#if settings.use_cases_url}}
+    <a class="hc-quick__card" href="{{settings.use_cases_url}}">
+      <span class="hc-quick__top">
+        <span class="hc-quick__icon"><svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-lightbulb"/></svg></span>
+        <span class="hc-quick__arrow"><svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></span>
+      </span>
+      <h2>Use cases</h2>
+      <p>Access step-by-step solutions for common Lodgify scenarios.</p>
+    </a>
+    {{/if}}
+    <a class="hc-quick__card" href="{{settings.contact_url}}">
+      <span class="hc-quick__top">
+        <span class="hc-quick__icon"><svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-comment-question"/></svg></span>
+        <span class="hc-quick__arrow"><svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></span>
+      </span>
+      <h2>Contact support</h2>
+      <p>Find the best way to reach our support team.</p>
+    </a>
+  </div>
+</div>
+
+<main class="hc-home hc-container">
+  <section class="hc-block" aria-labelledby="topics">
+    <div class="hc-block__head">
+      <div>
+        <h2 class="hc-display" id="topics">Browse by topic</h2>
+        <p class="hc-lead">Every area of Lodgify, organized the way you work.</p>
+      </div>
+    </div>
+    <div class="hc-topics">
+      {{#each categories}}
+      {{#each sections}}
+      <a class="hc-topic" href="{{url}}">
+        <span class="hc-topic__icon" data-cat-id="{{id}}" data-cat-name="{{name}}">
+          <svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-book"/></svg>
+        </span>
+        <span class="hc-topic__text">
+          <h3>{{name}}</h3>
+          {{#if description}}<p>{{description}}</p>{{/if}}
+        </span>
+      </a>
+      {{/each}}
+      {{/each}}
+    </div>
+  </section>
+
+  {{#if promoted_articles}}
+  <section class="hc-block hc-block--split" aria-labelledby="popular">
+    <div class="hc-block__intro">
+      <h2 class="hc-display" id="popular">Popular articles</h2>
+      <p class="hc-lead">The guides hosts open most this month.</p>
+    </div>
+    <ol class="hc-ranked">
+      {{#each promoted_articles}}
+      <li>
+        <a href="{{url}}">
+          <span class="hc-ranked__n" aria-hidden="true"></span>
+          <span class="hc-ranked__title">{{title}}</span>
+          <svg class="hc-icon" aria-hidden="true"><use href="#icon-angle-right"/></svg>
+        </a>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+  {{/if}}
+
+  <section class="hc-cards" id="use-cases" aria-label="More ways to learn">
+    {{#if settings.use_cases_url}}
+    <div class="hc-card-lg hc-card-lg--soft">
+      <div class="hc-card-lg__text">
+        <span class="hc-pill">Use cases</span>
+        <h2 class="hc-display">Real scenarios.<br>Step-by-step solutions.</h2>
+        <p class="hc-lead">Access step-by-step solutions for common Lodgify scenarios.</p>
+      </div>
+      <a class="hc-btn hc-btn--primary" href="{{settings.use_cases_url}}">Browse use cases
+        <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+      </a>
+    </div>
+    {{/if}}
+    {{#if settings.academy_url}}
+    <div class="hc-card-lg hc-card-lg--accent">
+      <div class="hc-card-lg__text">
+        <svg class="hc-icon hc-icon--xl" aria-hidden="true"><use href="#icon-presentation-play"/></svg>
+        <h2>Lodgify Academy</h2>
+        <p>Learn at your own pace with video lessons and webinars.</p>
+      </div>
+      <a class="hc-btn hc-btn--primary" href="{{settings.academy_url}}">Start learning</a>
+    </div>
+    {{/if}}
+  </section>
+</main>

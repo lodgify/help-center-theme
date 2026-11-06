@@ -1,0 +1,55 @@
+<div class="hc-container hc-band-wrap">
+  <section class="hc-band">
+    <div class="hc-band__main">
+      <nav aria-label="Breadcrumb">
+        {{breadcrumbs}}
+      </nav>
+      <div class="hc-band__title">
+        <span class="hc-band__icon" data-cat-id="{{category.id}}" data-cat-name="{{category.name}}">
+          <svg class="hc-icon hc-icon--xl" aria-hidden="true"><use href="#icon-book"/></svg>
+        </span>
+        <h1 class="hc-display hc-display--xl">{{category.name}}</h1>
+      </div>
+      {{#if category.description}}<p class="hc-band__lead">{{category.description}}</p>{{/if}}
+    </div>
+    <div class="hc-search-wrap hc-search-wrap--band">
+      {{search class='hc-search hc-search--band' placeholder=settings.search_placeholder}}
+    </div>
+  </section>
+</div>
+
+<main class="hc-layout hc-container">
+  <nav class="hc-sidenav hc-desk-only" aria-label="Knowledge base" data-categories-nav data-current-category="{{category.id}}">
+    <h2 class="hc-eyebrow">Knowledge base</h2>
+    <ul class="hc-sidenav__list" data-categories-list></ul>
+  </nav>
+
+  <div class="hc-layout__main">
+    <div class="hc-layout__head">
+      <h2 class="hc-h2">{{category.name}}</h2>
+    </div>
+    <div class="hc-section-grid">
+      {{#each sections}}
+      <article class="hc-section-card">
+        <div class="hc-section-card__head">
+          <h3><a href="{{url}}">{{name}}</a></h3>
+          <span class="hc-tag" data-count="{{article_count}}">{{article_count}} articles</span>
+        </div>
+        <ul class="hc-section-card__list">
+          {{#each articles}}
+          <li>
+            <a href="{{url}}"><span>{{title}}</span><svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-angle-right"/></svg></a>
+          </li>
+          {{/each}}
+        </ul>
+        <a class="hc-more" href="{{url}}">See all {{article_count}} articles
+          <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+        </a>
+      </article>
+      {{/each}}
+    </div>
+    {{#unless sections}}
+    <p class="hc-empty">No sections in this category yet.</p>
+    {{/unless}}
+  </div>
+</main>

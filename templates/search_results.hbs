@@ -1,0 +1,53 @@
+<div class="hc-container hc-band-wrap">
+  <section class="hc-band hc-band--stack hc-band--search">
+    <h1 class="hc-display hc-display--lg">
+      {{#if results_count}}{{results_count}} results for{{else}}Results for{{/if}} &ldquo;{{query}}&rdquo;
+    </h1>
+    <div class="hc-search-wrap hc-search-wrap--band hc-search-wrap--wide">
+      {{search class='hc-search hc-search--band' placeholder=settings.search_placeholder}}
+    </div>
+  </section>
+</div>
+
+<main class="hc-layout hc-container">
+  <aside class="hc-sidenav" aria-label="Filter results">
+    {{#if subfilters}}
+    <h2 class="hc-eyebrow">Filter by topic</h2>
+    <ul class="hc-sidenav__list">
+      {{#each subfilters}}
+      <li>
+        <a class="hc-filter {{#if selected}}is-current{{/if}}" href="{{url}}" {{#if selected}}aria-current="true"{{/if}}>
+          <span>{{name}}</span>
+          <span class="hc-filter__count">{{count}}</span>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </aside>
+
+  <div class="hc-layout__main">
+    {{#if results}}
+    <ol class="hc-results">
+      {{#each results}}
+      <li>
+        <a class="hc-result" href="{{url}}">
+          <span class="hc-result__path">
+            {{#each path_steps}}<span>{{name}}</span>{{#unless @last}}<svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-angle-right"/></svg>{{/unless}}{{/each}}
+          </span>
+          <span class="hc-result__title">{{title}}</span>
+          {{#if text}}<span class="hc-result__snippet">{{text}}</span>{{/if}}
+        </a>
+      </li>
+      {{/each}}
+    </ol>
+    {{pagination}}
+    {{else}}
+    <div class="hc-noresults">
+      <h2 class="hc-h2">No results found</h2>
+      <p class="hc-lead">Try different keywords, or check your spelling.</p>
+      <a class="hc-btn hc-btn--primary" href="{{settings.contact_url}}">Contact us</a>
+    </div>
+    {{/if}}
+  </div>
+</main>

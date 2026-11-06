@@ -1,0 +1,38 @@
+</div>
+
+<footer class="hc-footer">
+  <div class="hc-footer__panel">
+    <div class="hc-footer__inner">
+      <div class="hc-footer__top">
+        <div class="hc-footer__brand">
+          <svg viewBox="0 0 76.113 20" width="84" height="22" role="img" aria-label="Lodgify"><use href="#logo-word"/></svg>
+          <span class="hc-footer__rule" aria-hidden="true"></span>
+          <div class="hc-footer__help">
+            <h2>Still need help?</h2>
+            <p>Our support team is here for you.</p>
+          </div>
+        </div>
+        <div class="hc-footer__cta">
+          {{#if settings.status_url}}<a class="hc-btn hc-btn--outline-inverse" href="{{settings.status_url}}">System status</a>{{/if}}
+          <a class="hc-btn hc-btn--accent" href="{{settings.contact_url}}">Contact us
+            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hc-footer__bottom">
+        <nav class="hc-footer__links" aria-label="Lodgify">
+          {{#if settings.website_url}}<a href="{{settings.website_url}}">lodgify.com</a>{{/if}}
+          {{#if settings.academy_url}}<a href="{{settings.academy_url}}">Lodgify Academy</a>{{/if}}
+          {{#if settings.blog_url}}<a href="{{settings.blog_url}}">Blog</a>{{/if}}
+          {{#if settings.changelog_url}}<a href="{{settings.changelog_url}}">Changelog</a>{{/if}}
+        </nav>
+        <nav class="hc-footer__links" aria-label="Legal">
+          {{#if settings.terms_url}}<a href="{{settings.terms_url}}">Terms of service</a>{{/if}}
+          {{#if settings.privacy_url}}<a href="{{settings.privacy_url}}">Privacy policy</a>{{/if}}
+          {{#if settings.cookies_url}}<a href="{{settings.cookies_url}}">Cookie policy</a>{{/if}}
+          <span>&copy; 2013&ndash;<span data-year>2026</span> Lodgify</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>

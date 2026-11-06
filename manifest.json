@@ -1,0 +1,176 @@
+{
+  "name": "Lodgify Help Center",
+  "author": "Lodgify",
+  "version": "1.0.0",
+  "api_version": 4,
+  "default_locale": "en-us",
+  "settings": [
+    {
+      "label": "Home page",
+      "variables": [
+        {
+          "identifier": "hero_title",
+          "type": "text",
+          "description": "Main heading of the home page",
+          "label": "Hero heading",
+          "value": "Lodgify Help Center"
+        },
+        {
+          "identifier": "hero_tagline",
+          "type": "text",
+          "description": "Line under the heading, empty to hide",
+          "label": "Hero tagline",
+          "value": "Find answers. Get back to hosting."
+        },
+        {
+          "identifier": "hero_subtitle",
+          "type": "text",
+          "description": "Text under the tagline",
+          "label": "Hero subtitle",
+          "value": "Step-by-step Lodgify guides for your website, bookings, payments and channel connections."
+        },
+        {
+          "identifier": "search_placeholder",
+          "type": "text",
+          "description": "Placeholder in search boxes",
+          "label": "Search placeholder",
+          "value": "Search for articles, for example: connect Airbnb"
+        },
+        {
+          "identifier": "popular_searches",
+          "type": "text",
+          "description": "Comma-separated searches, empty to hide",
+          "label": "Popular searches",
+          "value": "Connect to Airbnb, Payment gateways, iCal sync, Dynamic pricing, Website builder"
+        }
+      ]
+    },
+    {
+      "label": "Links",
+      "variables": [
+        {
+          "identifier": "use_cases_url",
+          "type": "text",
+          "description": "Use cases link",
+          "label": "Use cases URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "academy_url",
+          "type": "text",
+          "description": "Lodgify Academy link",
+          "label": "Lodgify Academy URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "contact_url",
+          "type": "text",
+          "description": "Contact us button link",
+          "label": "Contact us URL",
+          "value": "https://help.lodgify.com/hc/articles/360002880573"
+        },
+        {
+          "identifier": "status_url",
+          "type": "text",
+          "description": "System status link",
+          "label": "System status URL",
+          "value": "https://www.lodgify.com"
+        }
+      ]
+    },
+    {
+      "label": "Footer",
+      "variables": [
+        {
+          "identifier": "website_url",
+          "type": "text",
+          "description": "lodgify.com link",
+          "label": "Website URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "blog_url",
+          "type": "text",
+          "description": "Blog link",
+          "label": "Blog URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "changelog_url",
+          "type": "text",
+          "description": "Changelog link",
+          "label": "Changelog URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "terms_url",
+          "type": "text",
+          "description": "Terms of service link",
+          "label": "Terms of service URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "privacy_url",
+          "type": "text",
+          "description": "Privacy policy link",
+          "label": "Privacy policy URL",
+          "value": "https://www.lodgify.com"
+        },
+        {
+          "identifier": "cookies_url",
+          "type": "text",
+          "description": "Cookie policy link",
+          "label": "Cookie policy URL",
+          "value": "https://www.lodgify.com"
+        }
+      ]
+    },
+    {
+      "label": "Sign-in help form",
+      "variables": [
+        {
+          "identifier": "signin_form_id",
+          "type": "text",
+          "description": "ID of the sign-in help ticket form",
+          "label": "Ticket form ID",
+          "value": "31626658381340"
+        },
+        {
+          "identifier": "signin_issue_field_id",
+          "type": "text",
+          "description": "Issue type field, shown as cards",
+          "label": "Issue type field ID",
+          "value": "31607584352412"
+        },
+        {
+          "identifier": "signin_email_field_id",
+          "type": "text",
+          "description": "Requester email field",
+          "label": "Requester email field ID",
+          "value": "4416158085650"
+        },
+        {
+          "identifier": "signin_phone_field_id",
+          "type": "text",
+          "description": "Requester phone number field",
+          "label": "Phone number field ID",
+          "value": "31606911818652"
+        },
+        {
+          "identifier": "signin_subject_prefix",
+          "type": "text",
+          "description": "Ticket subject, before the issue type",
+          "label": "Ticket subject",
+          "value": "Sign-in help"
+        },
+        {
+          "identifier": "signin_url",
+          "type": "text",
+          "description": "Sign-in page link, empty to hide",
+          "label": "Sign-in page URL",
+          "value": "https://www.lodgify.com"
+        }
+      ]
+    }
+  ]
+}
