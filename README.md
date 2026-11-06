@@ -28,13 +28,6 @@ Custom Zendesk Guide theme for the Lodgify Help Center (help.lodgify.com), built
 
 Set these in Guide > Customize design > (this theme) > Settings.
 
-**Home page**
-- Hero heading: "Lodgify Help Center"
-- Hero tagline: line under the heading (empty hides it)
-- Hero subtitle
-- Search placeholder
-- Popular searches: comma-separated shortcuts under the search box (empty hides them)
-
 **Links**: Use cases, Lodgify Academy, Contact us, System status. An empty link hides that item. "Contact us" must point to the Contact us article.
 
 **Footer**: website, blog, changelog and legal links.
@@ -42,6 +35,18 @@ Set these in Guide > Customize design > (this theme) > Settings.
 **Sign-in help form**: form ID, field IDs, ticket subject and sign-in page URL (see below).
 
 Manifest limits: setting descriptions must be 80 characters or less, or the import fails.
+
+## Home page texts (dynamic content)
+
+These texts come from dynamic content (Admin Center > Workspaces > Dynamic content), so they're translated:
+
+| Text | Dynamic content |
+|---|---|
+| Hero heading | `hc_hero_title` |
+| Tagline | `hero_tagline` |
+| Subtitle | `hc_hero_subtitle` |
+| Search placeholder (all search boxes) | `search_placeholder` |
+| Popular searches (comma-separated, empty hides them) | `popular_searches` |
 
 ## Sign-in help form
 

@@ -13,7 +13,7 @@
       {{#if category.description}}<p class="hc-band__lead">{{category.description}}</p>{{/if}}
     </div>
     <div class="hc-search-wrap hc-search-wrap--band">
-      {{search class='hc-search hc-search--band' placeholder=settings.search_placeholder}}
+      {{search class='hc-search hc-search--band' placeholder=(dc 'search_placeholder')}}
     </div>
   </section>
 </div>

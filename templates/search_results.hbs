@@ -4,7 +4,7 @@
       {{#if results_count}}{{results_count}} results for{{else}}Results for{{/if}} &ldquo;{{query}}&rdquo;
     </h1>
     <div class="hc-search-wrap hc-search-wrap--band hc-search-wrap--wide">
-      {{search class='hc-search hc-search--band' placeholder=settings.search_placeholder}}
+      {{search class='hc-search hc-search--band' placeholder=(dc 'search_placeholder')}}
     </div>
   </section>
 </div>
