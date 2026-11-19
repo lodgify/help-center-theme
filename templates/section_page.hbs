@@ -1,10 +1,15 @@
 <div class="hc-container hc-band-wrap">
-  <section class="hc-band hc-band--stack">
-    <nav aria-label="Breadcrumb">
-      {{breadcrumbs}}
-    </nav>
-    <h1 class="hc-display hc-display--xl">{{section.name}}</h1>
-    {{#if section.description}}<p class="hc-band__lead">{{section.description}}</p>{{/if}}
+  <section class="hc-band">
+    <div class="hc-band__main">
+      <nav aria-label="Breadcrumb">
+        {{breadcrumbs}}
+      </nav>
+      <h1 class="hc-display hc-display--xl">{{section.name}}</h1>
+      {{#if section.description}}<p class="hc-band__lead">{{section.description}}</p>{{/if}}
+    </div>
+    <div class="hc-search-wrap hc-search-wrap--band">
+      {{search class='hc-search hc-search--band' placeholder=(dc 'search_placeholder')}}
+    </div>
   </section>
 </div>
 
