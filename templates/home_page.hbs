@@ -11,7 +11,7 @@
         {{search class='hc-search hc-search--hero' placeholder=(dc 'search_placeholder')}}
       </div>
       <div class="hc-hero__popular" data-popular="{{dc 'popular_searches'}}">
-        <span>Popular:</span>
+        <span>{{dc 'hc_popular'}}</span>
       </div>
     </div>
   </section>
@@ -35,8 +35,8 @@
         <span class="hc-quick__icon"><svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-book-open"/></svg></span>
         <span class="hc-quick__arrow"><svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></span>
       </span>
-      <h2>Knowledge base</h2>
-      <p>Find quick answers to your questions about every Lodgify feature.</p>
+      <h2 data-kb-label>{{dc 'hcknowledgebase'}}</h2>
+      <p>{{dc 'hcknowledgebasedescription'}}</p>
     </a>
     {{#if settings.use_cases_url}}
     <a class="hc-quick__card" href="{{settings.use_cases_url}}">
@@ -44,8 +44,8 @@
         <span class="hc-quick__icon"><svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-lightbulb"/></svg></span>
         <span class="hc-quick__arrow"><svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></span>
       </span>
-      <h2>Use cases</h2>
-      <p>Access step-by-step solutions for common Lodgify scenarios.</p>
+      <h2>{{dc 'hcquickguidestitle'}}</h2>
+      <p>{{dc 'hcquickguidesdescription'}}</p>
     </a>
     {{/if}}
     <a class="hc-quick__card" href="{{settings.contact_url}}">
@@ -53,7 +53,7 @@
         <span class="hc-quick__icon"><svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-comment-question"/></svg></span>
         <span class="hc-quick__arrow"><svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></span>
       </span>
-      <h2>Contact support</h2>
+      <h2>{{dc 'hccontactus'}}</h2>
       <p>Find the best way to reach our support team.</p>
     </a>
   </div>
@@ -63,8 +63,8 @@
   <section class="hc-block" aria-labelledby="topics">
     <div class="hc-block__head">
       <div>
-        <h2 class="hc-display" id="topics">Browse by topic</h2>
-        <p class="hc-lead">Every area of Lodgify, organized the way you work.</p>
+        <h2 class="hc-display" id="topics">{{dc 'hc_browse_by_topic'}}</h2>
+        <p class="hc-lead">{{dc 'hc_browse_by_topic_text'}}</p>
       </div>
     </div>
     <div class="hc-topics" data-use-cases-url="{{settings.use_cases_url}}">
@@ -102,8 +102,8 @@
   {{#if promoted_articles}}
   <section class="hc-block hc-block--split" aria-labelledby="popular">
     <div class="hc-block__intro">
-      <h2 class="hc-display" id="popular">Popular articles</h2>
-      <p class="hc-lead">The guides hosts open most this month.</p>
+      <h2 class="hc-display" id="popular">{{dc 'hc_popular_articles'}}</h2>
+      <p class="hc-lead">{{dc 'hc_popular_articles_text'}}</p>
     </div>
     <ol class="hc-ranked">
       {{#each promoted_articles}}
@@ -123,11 +123,11 @@
     {{#if settings.use_cases_url}}
     <div class="hc-card-lg hc-card-lg--soft">
       <div class="hc-card-lg__text">
-        <span class="hc-pill">Use cases</span>
-        <h2 class="hc-display">Real scenarios.<br>Step-by-step solutions.</h2>
-        <p class="hc-lead">Access step-by-step solutions for common Lodgify scenarios.</p>
+        <span class="hc-pill">{{dc 'hcquickguidestitle'}}</span>
+        <h2 class="hc-display">{{dc 'hc_use_cases_headline'}}</h2>
+        <p class="hc-lead">{{dc 'hcquickguidesdescription'}}</p>
       </div>
-      <a class="hc-btn hc-btn--primary" href="{{settings.use_cases_url}}">Browse use cases
+      <a class="hc-btn hc-btn--primary" href="{{settings.use_cases_url}}">{{dc 'hcletsdoit'}}
         <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
       </a>
     </div>
@@ -137,9 +137,9 @@
       <div class="hc-card-lg__text">
         <svg class="hc-icon hc-icon--xl" aria-hidden="true"><use href="#icon-presentation-play"/></svg>
         <h2>Lodgify Academy</h2>
-        <p>Learn at your own pace with video lessons and webinars.</p>
+        <p>{{dc 'hc_academy_text'}}</p>
       </div>
-      <a class="hc-btn hc-btn--primary" href="{{settings.academy_url}}">Start learning</a>
+      <a class="hc-btn hc-btn--primary" href="{{settings.academy_url}}">{{dc 'hc_start_learning'}}</a>
     </div>
     {{/if}}
   </section>

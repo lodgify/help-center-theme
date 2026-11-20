@@ -15,7 +15,7 @@
 
 <main class="hc-layout hc-container">
   <nav class="hc-sidenav hc-desk-only" aria-label="Sections" data-sections-nav data-current-section="{{section.id}}">
-    <h2 class="hc-eyebrow" data-sections-title>Sections</h2>
+    <h2 class="hc-eyebrow" data-sections-title>{{dc 'hc_sections'}}</h2>
     <ul class="hc-sidenav__list" data-sections-list></ul>
   </nav>
 
@@ -23,14 +23,14 @@
     {{#if section.sections}}
     <div class="hc-subsections">
       <div class="hc-layout__head">
-        <h2 class="hc-h2">Sections</h2>
+        <h2 class="hc-h2">{{dc 'hc_sections'}}</h2>
       </div>
       <div class="hc-section-grid">
         {{#each section.sections}}
         <article class="hc-section-card" data-section-id="{{id}}">
           <div class="hc-section-card__head">
             <h3><a href="{{url}}">{{name}}</a></h3>
-            <span class="hc-tag" data-count="{{article_count}}">{{article_count}} articles</span>
+            <span class="hc-tag" data-count="{{article_count}}">{{article_count}} {{dc 'hc_article_other'}}</span>
           </div>
           {{#if articles}}
           <ul class="hc-section-card__list">
@@ -41,7 +41,7 @@
             {{/each}}
           </ul>
           {{/if}}
-          <a class="hc-more" href="{{url}}" data-see-all>See all {{article_count}} articles
+          <a class="hc-more" href="{{url}}" data-see-all>{{dc 'hc_see_all_articles'}}
             <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
           </a>
         </article>
@@ -52,7 +52,7 @@
 
     {{#if section.articles}}
     <div class="hc-layout__head">
-      <h2 class="hc-h2">Articles</h2>
+      <h2 class="hc-h2">{{dc 'hcarticles'}}</h2>
     </div>
     <ul class="hc-article-list">
       {{#each section.articles}}
@@ -62,7 +62,7 @@
           <span class="hc-article-row__body">
             <span class="hc-article-row__title">
               <span class="hc-article-row__name" data-title>{{title}}</span>
-              {{#if promoted}}<span class="hc-tag hc-tag--accent">Featured</span>{{/if}}
+              {{#if promoted}}<span class="hc-tag hc-tag--accent">{{dc 'hc_featured'}}</span>{{/if}}
             </span>
             <span class="hc-article-row__excerpt" data-excerpt></span>
           </span>
@@ -74,7 +74,7 @@
     {{pagination}}
     {{else}}
     {{#unless section.sections}}
-    <p class="hc-empty">No articles in this section yet.</p>
+    <p class="hc-empty">{{dc 'hc_no_articles'}}</p>
     {{/unless}}
     {{/if}}
   </div>

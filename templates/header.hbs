@@ -39,19 +39,19 @@
 <symbol id="icon-folder" viewBox="0 0 24 24"><path d="M2.79139 19.0834V4.9164C2.79139 3.74272 3.74271 2.7914 4.91639 2.7914H8.76893C9.74398 2.79152 10.5939 3.45484 10.8305 4.40077L11.1361 5.6244H19.0834C20.257 5.6244 21.2092 6.57587 21.2094 7.7494V19.0834C21.2094 20.2571 20.2571 21.2094 19.0834 21.2094H4.91639C3.74272 21.2094 2.79139 20.2571 2.79139 19.0834ZM4.20741 19.0834C4.20741 19.4746 4.52516 19.7924 4.91639 19.7924H19.0834C19.4746 19.7924 19.7924 19.4746 19.7924 19.0834V7.7494C19.7922 7.35831 19.4745 7.0414 19.0834 7.0414H10.5834C10.2583 7.0414 9.97472 6.81964 9.89588 6.50429L9.45545 4.74452C9.37663 4.42925 9.09387 4.20754 8.76893 4.20741H4.91639C4.52517 4.20741 4.20741 4.52517 4.20741 4.9164V19.0834Z" fill="currentColor"/></symbol>
 </svg>
 
-<a class="hc-skip" href="#main-content">Skip to main content</a>
+<a class="hc-skip" href="#main-content">{{dc 'hc_skip_to_content'}}</a>
 
 <header class="hc-header" id="hc-header">
   <div class="hc-header__row hc-container">
     <a class="hc-capsule hc-brand" href="{{page_path 'help_center'}}" aria-label="Lodgify Help Center home">
       <svg class="hc-brand__logo" viewBox="0 0 76.113 20" width="84" height="22" role="img" aria-label="Lodgify"><use href="#logo-word"/></svg>
       <span class="hc-brand__divider" aria-hidden="true"></span>
-      <span class="hc-brand__name">Help Center</span>
+      <span class="hc-brand__name">{{dc 'hc_help_center'}}</span>
     </a>
 
     <nav class="hc-capsule hc-nav hc-desk" aria-label="Main">
-      <a class="hc-nav__link" href="{{page_path 'help_center'}}#topics">Knowledge base</a>
-      {{#if settings.use_cases_url}}<a class="hc-nav__link" href="{{settings.use_cases_url}}">Use cases</a>{{/if}}
+      <a class="hc-nav__link" href="{{page_path 'help_center'}}#topics"><span data-kb-label>{{dc 'hcknowledgebase'}}</span></a>
+      {{#if settings.use_cases_url}}<a class="hc-nav__link" href="{{settings.use_cases_url}}">{{dc 'hcquickguidestitle'}}</a>{{/if}}
     </nav>
 
     <div class="hc-capsule hc-actions hc-desk">
@@ -69,7 +69,7 @@
         </ul>
       </details>
       {{/if}}
-      <a class="hc-btn hc-btn--accent hc-btn--sm" href="{{settings.contact_url}}">Contact us</a>
+      <a class="hc-btn hc-btn--accent hc-btn--sm" href="{{settings.contact_url}}">{{dc 'hccontactus'}}</a>
     </div>
 
     <div class="hc-capsule hc-mobile-actions hc-mob">
@@ -89,7 +89,7 @@
       <a class="hc-menu__brand" href="{{page_path 'help_center'}}" aria-label="Lodgify Help Center home">
         <svg viewBox="0 0 76.113 20" width="76" height="20" role="img" aria-label="Lodgify"><use href="#logo-word"/></svg>
         <span class="hc-brand__divider" aria-hidden="true"></span>
-        <span class="hc-brand__name">Help Center</span>
+        <span class="hc-brand__name">{{dc 'hc_help_center'}}</span>
       </a>
       <button class="hc-icon-btn hc-icon-btn--onDark" type="button" aria-label="Close menu" data-close-menu>
         <svg class="hc-icon" aria-hidden="true"><use href="#icon-close"/></svg>
@@ -101,8 +101,8 @@
     </div>
 
     <nav class="hc-menu__nav" aria-label="Main">
-      <a href="{{page_path 'help_center'}}#topics" data-close-menu>Knowledge base <svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
-      {{#if settings.use_cases_url}}<a href="{{settings.use_cases_url}}">Use cases <svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>{{/if}}
+      <a href="{{page_path 'help_center'}}#topics" data-close-menu><span data-kb-label>{{dc 'hcknowledgebase'}}</span> <svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+      {{#if settings.use_cases_url}}<a href="{{settings.use_cases_url}}">{{dc 'hcquickguidestitle'}} <svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>{{/if}}
     </nav>
 
     <div class="hc-menu__bottom">
@@ -122,7 +122,7 @@
         </details>
         {{/if}}
       </div>
-      <a class="hc-btn hc-btn--accent hc-btn--lg hc-btn--block" href="{{settings.contact_url}}">Contact us</a>
+      <a class="hc-btn hc-btn--accent hc-btn--lg hc-btn--block" href="{{settings.contact_url}}">{{dc 'hccontactus'}}</a>
     </div>
   </div>
 </div>

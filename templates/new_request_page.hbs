@@ -2,15 +2,15 @@
   <section class="hc-band hc-band--stack">
     <nav aria-label="Breadcrumb">
       <ol class="hc-crumbs">
-        <li><a href="{{page_path 'help_center'}}">Help Center</a><svg class="hc-icon hc-icon--sm hc-crumbs__sep" aria-hidden="true"><use href="#icon-angle-right"/></svg></li>
-        <li><span aria-current="page">Get help signing in</span></li>
+        <li><a href="{{page_path 'help_center'}}">{{dc 'hc_help_center'}}</a><svg class="hc-icon hc-icon--sm hc-crumbs__sep" aria-hidden="true"><use href="#icon-angle-right"/></svg></li>
+        <li><span aria-current="page">{{dc 'hc_signin_title'}}</span></li>
       </ol>
     </nav>
     <div class="hc-band__title">
       <span class="hc-band__icon" aria-hidden="true"><svg class="hc-icon hc-icon--xl"><use href="#icon-lock"/></svg></span>
-      <h1 class="hc-display hc-display--xl">Get help signing in</h1>
+      <h1 class="hc-display hc-display--xl">{{dc 'hc_signin_title'}}</h1>
     </div>
-    <p class="hc-band__lead">Can't access your Lodgify account? Tell us what's happening and our team will help you get back in.</p>
+    <p class="hc-band__lead">{{dc 'hc_signin_intro'}}</p>
   </section>
 </div>
 
@@ -25,7 +25,7 @@
            data-phone-field="{{settings.signin_phone_field_id}}"
            data-subject-prefix="{{settings.signin_subject_prefix}}">
         <noscript>
-          <p class="hc-alert">This form needs JavaScript. Turn it on in your browser, or <a href="{{settings.contact_url}}">see other ways to contact us</a>.</p>
+          <p class="hc-alert">{{dc 'hc_signin_nojs'}} <a href="{{settings.contact_url}}">{{dc 'hc_signin_other_ways'}}</a>.</p>
         </noscript>
       </div>
 
@@ -41,17 +41,17 @@
     {{#if settings.signin_url}}
     <div class="hc-request-card hc-request-card--accent">
       <svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-key-skeleton"/></svg>
-      <h2 class="hc-request-card__title">Try resetting your password first</h2>
-      <p>You can set a new password from the Lodgify sign-in page in a few minutes.</p>
+      <h2 class="hc-request-card__title">{{dc 'hc_signin_reset_title'}}</h2>
+      <p>{{dc 'hc_signin_reset_text'}}</p>
       <a class="hc-btn hc-btn--primary hc-btn--sm" href="{{settings.signin_url}}">Go to sign-in page
         <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-external-link"/></svg>
       </a>
     </div>
     {{/if}}
     <div class="hc-request-card">
-      <h2 class="hc-request-card__title hc-request-card__title--sm">Need help with something else?</h2>
-      <p>This form is only for sign-in problems. For anything else, see how to contact us.</p>
-      <a class="hc-more" href="{{settings.contact_url}}">Contact us
+      <h2 class="hc-request-card__title hc-request-card__title--sm">{{dc 'hc_signin_other_title'}}</h2>
+      <p>{{dc 'hc_signin_other_text'}}</p>
+      <a class="hc-more" href="{{settings.contact_url}}">{{dc 'hccontactus'}}
         <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
       </a>
     </div>
