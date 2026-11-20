@@ -9,7 +9,7 @@
 
 <main class="hc-layout hc-layout--article hc-container">
   <nav class="hc-sidenav hc-desk-only" aria-label="Articles in this section">
-    <h2 class="hc-eyebrow">In this section</h2>
+    <h2 class="hc-eyebrow">{{dc 'hc_in_this_section'}}</h2>
     <ul class="hc-sidenav__list">
       {{#each section.articles}}
       <li>
@@ -17,7 +17,7 @@
       </li>
       {{/each}}
     </ul>
-    <a class="hc-more hc-more--side" href="{{section.url}}">See all articles in this section</a>
+    <a class="hc-more hc-more--side" href="{{section.url}}">{{dc 'hc_see_all_in_section'}}</a>
   </nav>
 
   <article class="hc-article" id="hc-article">
@@ -30,16 +30,16 @@
             <svg viewBox="0 0 14.711 20" width="12" height="16" focusable="false"><use href="#logo-mark"/></svg>
           </span>
           <span class="hc-author__text">
-            <span class="hc-author__name">Lodgify Resources Team</span>
-            <span class="hc-author__date">Updated {{date edited_at format='relative'}}</span>
+            <span class="hc-author__name">{{dc 'hcresourcesteam'}}</span>
+            <span class="hc-author__date">{{dc 'hc_updated'}} {{date edited_at format='relative'}}</span>
           </span>
         </div>
         <div class="hc-article__tools">
           <button type="button" class="hc-btn hc-btn--ghost hc-btn--sm" data-copy-link>
-            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-link"/></svg><span data-copy-label>Copy link</span>
+            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-link"/></svg><span data-copy-label>{{dc 'hc_copy_link'}}</span>
           </button>
           <button type="button" class="hc-btn hc-btn--ghost hc-btn--sm" data-print>
-            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-print"/></svg>Print
+            <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-print"/></svg>{{dc 'hc_print'}}
           </button>
         </div>
       </div>
@@ -50,21 +50,60 @@
     </div>
 
 
-    <section class="hc-helpful" aria-labelledby="helpful">
-      <div class="hc-helpful__text">
-        <h2 id="helpful">Was this article helpful?</h2>
-        <small class="hc-helpful__count">{{vote 'label' class='article-vote-label'}}</small>
+    <section class="hc-helpful" aria-labelledby="helpful" data-feedback>
+      <div class="hc-helpful__vote" data-feedback-vote>
+        <div class="hc-helpful__text">
+          <h2 id="helpful">{{dc 'kb_-_was_this_helpful'}}</h2>
+          <small class="hc-helpful__count">{{vote 'label' class='article-vote-label'}}</small>
+        </div>
+        <div class="hc-helpful__controls" role="radiogroup">
+          {{vote 'up' role='radio' class='hc-vote hc-vote--up'}}
+          {{vote 'down' role='radio' class='hc-vote hc-vote--down'}}
+        </div>
       </div>
-      <div class="hc-helpful__controls" role="radiogroup">
-        {{vote 'up' role='radio' class='hc-vote hc-vote--up'}}
-        {{vote 'down' role='radio' class='hc-vote hc-vote--down'}}
+
+      <div class="hc-feedback" data-feedback-yes hidden>
+        <p class="hc-feedback__title">{{dc 'hcgladithelped'}}</p>
+        <label class="hc-field__label" for="hc-feedback-yes-text">{{dc 'hcsuggestions'}}</label>
+        <textarea class="hc-input hc-textarea" id="hc-feedback-yes-text" data-feedback-text placeholder="{{dc 'hcleavecomment_optional'}}"></textarea>
+        <div class="hc-feedback__actions">
+          <button type="button" class="hc-btn hc-btn--primary" data-feedback-send disabled>{{dc 'hcsubmit'}}</button>
+        </div>
       </div>
+
+      <div class="hc-feedback" data-feedback-no hidden>
+        <p class="hc-feedback__title">{{dc 'hcthanksforlettingusknow'}}</p>
+        <fieldset class="hc-feedback__reasons">
+          <legend class="hc-field__label">{{dc 'hcwasarticlehelpful'}}</legend>
+          <label class="hc-field--check"><input type="checkbox" value="Unclear information" data-feedback-reason> {{dc 'hcunclearinformation'}}</label>
+          <label class="hc-field--check"><input type="checkbox" value="Outdated information" data-feedback-reason> {{dc 'hcoutdatedinformation'}}</label>
+          <label class="hc-field--check"><input type="checkbox" value="Other" data-feedback-reason> {{dc 'hcother'}}</label>
+        </fieldset>
+        <div class="hc-feedback__actions" data-feedback-reason-actions>
+          <button type="button" class="hc-btn hc-btn--primary" data-feedback-confirm disabled>{{dc 'hcconfirm'}}</button>
+          <button type="button" class="hc-btn hc-btn--ghost" data-feedback-comment disabled>{{dc 'hcconfirmandcomment'}}</button>
+        </div>
+        <div class="hc-feedback__comment" data-feedback-comment-box hidden>
+          <label class="hc-field__label" for="hc-feedback-no-text">{{dc 'hcadditionalfeedback'}}</label>
+          <textarea class="hc-input hc-textarea" id="hc-feedback-no-text" data-feedback-text placeholder="{{dc 'hcleaveyourcomment'}}"></textarea>
+          <p class="hc-field__hint">{{dc 'hccontactsupport'}}</p>
+          <div class="hc-feedback__actions">
+            <button type="button" class="hc-btn hc-btn--primary" data-feedback-send disabled>{{dc 'hcsubmit'}}</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hc-feedback hc-feedback--done" data-feedback-done hidden role="status">
+        <p class="hc-feedback__title">{{dc 'hcthanksforsharing'}}</p>
+        <p>{{dc 'hcwevaluefeedback'}}</p>
+      </div>
+      <p class="hc-field__error" data-feedback-error hidden>{{dc 'hc_feedback_error'}}</p>
     </section>
     {{/with}}
 
     {{#if section.articles}}
     <section class="hc-related" aria-labelledby="related">
-      <h2 class="hc-h3" id="related">More in this section</h2>
+      <h2 class="hc-h3" id="related">{{dc 'hc_more_in_section'}}</h2>
       <ul class="hc-related__grid" data-related>
         {{#each section.articles}}
         {{#is id ../article.id}}{{else}}
@@ -80,13 +119,13 @@
 
   <aside class="hc-toc-aside" aria-label="On this page">
     <div class="hc-toc" data-toc hidden>
-      <h2 class="hc-eyebrow">On this page</h2>
+      <h2 class="hc-eyebrow">{{dc 'hc_on_this_page'}}</h2>
       <ul class="hc-toc__list" data-toc-list></ul>
     </div>
     <div class="hc-help-card">
       <svg class="hc-icon hc-icon--lg" aria-hidden="true"><use href="#icon-comment-question"/></svg>
-      <p>Need more help?</p>
-      <a class="hc-btn hc-btn--primary hc-btn--sm" href="{{settings.contact_url}}">Contact us</a>
+      <p>{{dc 'hc_need_more_help'}}</p>
+      <a class="hc-btn hc-btn--primary hc-btn--sm" href="{{settings.contact_url}}">{{dc 'hccontactus'}}</a>
     </div>
   </aside>
 </main>

@@ -12,7 +12,7 @@
 <main class="hc-layout hc-container">
   <aside class="hc-sidenav" aria-label="Filter results">
     {{#if subfilters}}
-    <h2 class="hc-eyebrow">Filter by topic</h2>
+    <h2 class="hc-eyebrow">{{dc 'hc_filter_by_topic'}}</h2>
     <ul class="hc-sidenav__list">
       {{#each subfilters}}
       <li>
@@ -44,9 +44,9 @@
     {{pagination}}
     {{else}}
     <div class="hc-noresults">
-      <h2 class="hc-h2">No results found</h2>
-      <p class="hc-lead">Try different keywords, or check your spelling.</p>
-      <a class="hc-btn hc-btn--primary" href="{{settings.contact_url}}">Contact us</a>
+      <h2 class="hc-h2">{{dc 'hc_no_results'}}</h2>
+      <p class="hc-lead">{{dc 'hc_no_results_text'}}</p>
+      <a class="hc-btn hc-btn--primary" href="{{settings.contact_url}}">{{dc 'hccontactus'}}</a>
     </div>
     {{/if}}
   </div>

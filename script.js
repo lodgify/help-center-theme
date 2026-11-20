@@ -2,6 +2,12 @@
  * Lodgify Help Center theme: behaviour.
  * Plain JS, no dependencies. Every feature degrades gracefully if it fails.
  */
+/* Translated text from the footer (data-hc-i18n), with an English fallback. */
+window.hcT = function (key, fallback) {
+  var n = document.querySelector('[data-hc-i18n]');
+  return (n && n.getAttribute('data-t-' + key)) || fallback;
+};
+
 (function () {
   'use strict';
 
@@ -117,15 +123,14 @@
     var articles = parseInt(tag ? tag.getAttribute('data-count') : '0', 10) || 0;
     var subs = qsa('.hc-section-card__list a.is-section', card).length;
     var parts = [];
-    if (subs) parts.push(subs + (subs === 1 ? ' section' : ' sections'));
-    if (articles) parts.push(articles + (articles === 1 ? ' article' : ' articles'));
+    if (subs) parts.push(subs + ' ' + (subs === 1 ? hcT('section-one', 'section') : hcT('section-other', 'sections')));
+    if (articles) parts.push(articles + ' ' + (articles === 1 ? hcT('article-one', 'article') : hcT('article-other', 'articles')));
     if (tag) {
       tag.hidden = !parts.length;
       if (parts.length) tag.textContent = parts.join(' \u00b7 ');
     }
     var more = qs('[data-see-all]', card);
-    if (more && !articles) more.firstChild.textContent = 'Open section ';
-    if (more && articles === 1) more.firstChild.textContent = 'See 1 article ';
+    if (more && !articles) more.firstChild.textContent = hcT('open-section', 'Open section') + ' ';
   }
   var sectionCards = qsa('.hc-section-card[data-section-id]');
   if (sectionCards.length) {
@@ -244,7 +249,7 @@
       var back = el('a', 'hc-more hc-more--side');
       back.href = parent ? parent.html_url : cat.html_url;
       back.appendChild(icon('arrow-left', 'hc-icon--sm'));
-      back.appendChild(doc.createTextNode(' Back to ' + (parent ? parent.name : cat.name)));
+      back.appendChild(doc.createTextNode(' ' + hcT('back-to', 'Back to') + ' ' + (parent ? parent.name : cat.name)));
       secNav.appendChild(back);
     }).catch(function () { secNav.hidden = true; });
   }
@@ -261,7 +266,7 @@
       }
       if (/^\s*\(\s*legacy[^)]*\)\s*-?\s*/i.test(txt)) {
         t.textContent = txt.replace(/^\s*\(\s*legacy[^)]*\)\s*-?\s*/i, '').trim() || txt;
-        holder.appendChild(el('span', 'hc-tag hc-tag--disabled', 'Legacy'));
+        holder.appendChild(el('span', 'hc-tag hc-tag--disabled', hcT('legacy', 'Legacy')));
       }
     });
     var sid = secArticles.getAttribute('data-section-id');
@@ -276,7 +281,7 @@
         if (ex && text) ex.textContent = text.length > 170 ? text.slice(0, 167).replace(/\s+\S*$/, '') + '...' : text;
         var up = qs('[data-updated]', row);
         if (up && a.edited_at) {
-          up.textContent = 'Updated ' + new Date(a.edited_at).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
+          up.textContent = hcT('updated', 'Updated') + ' ' + new Date(a.edited_at).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
         }
       });
     }).catch(function () { /* excerpts are optional */ });
@@ -347,7 +352,7 @@
       var done = function () {
         if (!label) return;
         var old = label.textContent;
-        label.textContent = 'Copied';
+        label.textContent = hcT('copied', 'Copied');
         setTimeout(function () { label.textContent = old; }, 1800);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -529,7 +534,7 @@
     var type = field.type;
     if (type === 'tagger') {
       input = el('select', 'hc-input hc-select');
-      var empty = el('option', '', 'Select an option');
+      var empty = el('option', '', hcT('select-option', 'Select an option'));
       empty.value = '';
       input.appendChild(empty);
       (field.options || []).forEach(function (o) {
@@ -624,8 +629,8 @@
   }
 
   var footer = el('div', 'hc-form__footer');
-  footer.appendChild(el('p', 'hc-form__note', 'We’ll reply to the email address above.'));
-  var submit = el('button', 'hc-btn hc-btn--primary hc-btn--lg', 'Send request');
+  footer.appendChild(el('p', 'hc-form__note', hcT('form-reply-note', 'We’ll reply to the email address above.')));
+  var submit = el('button', 'hc-btn hc-btn--primary hc-btn--lg', hcT('form-send', 'Send request'));
   submit.type = 'submit';
   footer.appendChild(submit);
   form.appendChild(footer);
@@ -661,9 +666,9 @@
       var v = valueOf(c);
       var msg = '';
       if (c.field.required && !v) {
-        msg = c.kind === 'radio' ? 'Choose what you need help with.' : 'Fill in this field.';
+        msg = c.kind === 'radio' ? hcT('form-choose-issue', 'Choose what you need help with.') : hcT('form-required', 'Fill in this field.');
       } else if (c.kind === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
-        msg = 'Enter a valid email address, like name@example.com.';
+        msg = hcT('form-invalid-email', 'Enter a valid email address, like name@example.com.');
       }
       if (msg) {
         showError(c, msg);
@@ -707,7 +712,7 @@
 
     sending = true;
     submit.setAttribute('aria-disabled', 'true');
-    submit.textContent = 'Sending…';
+    submit.textContent = hcT('form-sending', 'Sending…');
 
     fetch('/api/v2/help_center/sessions.json', { credentials: 'same-origin' })
       .then(function (r) { return r.json(); })
@@ -718,9 +723,151 @@
       .catch(function () {
         sending = false;
         submit.removeAttribute('aria-disabled');
-        submit.textContent = 'Send request';
-        alertBox.textContent = 'We couldn’t send your request. Wait a moment and try again.';
+        submit.textContent = hcT('form-send', 'Send request');
+        alertBox.textContent = hcT('form-error', 'We couldn’t send your request. Wait a moment and try again.');
         alertBox.hidden = false;
       });
+  });
+})();
+
+/* ---------- Knowledge base label ----------
+   Elements with data-kb-label show the Knowledge Base category name in the
+   visitor's language (trailing dot removed). Cached per session. */
+(function () {
+  var els = document.querySelectorAll('[data-kb-label]');
+  if (!els.length) return;
+  var locale = (document.documentElement.lang || 'en-us').toLowerCase();
+  var key = 'hc-kb-label-' + locale;
+  function apply(name) {
+    name = (name || '').replace(/[.\s]+$/, '');
+    if (!name) return;
+    Array.prototype.forEach.call(els, function (el) { el.textContent = name; });
+  }
+  var cached = null;
+  try { cached = sessionStorage.getItem(key); } catch (e) {}
+  if (cached) { apply(cached); return; }
+  fetch('/api/v2/help_center/' + locale + '/categories.json?per_page=1')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) {
+      var cat = data && data.categories && data.categories[0];
+      if (!cat) return;
+      apply(cat.name);
+      try { sessionStorage.setItem(key, cat.name); } catch (e) {}
+    })
+    .catch(function () {});
+})();
+
+/* ---------- Article feedback ----------
+   After a vote: Yes asks for an optional comment; No asks for reasons, then
+   an optional comment. Everything is sent to the KB feedback Google Sheet
+   with the same fields the old theme used. */
+(function () {
+  var box = document.querySelector('[data-feedback]');
+  if (!box) return;
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbyYCwOKGxMZwFvdDw9FSDpSpo1a0QqsrxmUWSOUJR0jAUL-BGR2a2ascMDT0YJ89UyU/exec';
+  var vote = box.querySelector('[data-feedback-vote]');
+  var yes = box.querySelector('[data-feedback-yes]');
+  var no = box.querySelector('[data-feedback-no]');
+  var done = box.querySelector('[data-feedback-done]');
+  var error = box.querySelector('[data-feedback-error]');
+  var reasons = no.querySelectorAll('[data-feedback-reason]');
+
+  function deviceType() {
+    return /mobile|tablet/i.test(navigator.userAgent) ? 'Mobile/Tablet' : 'Desktop';
+  }
+  function send(fields, onDone) {
+    var title = document.querySelector('.hc-article__title');
+    var crumbs = document.querySelector('.breadcrumbs');
+    var data = {
+      title: title ? title.innerText.trim() : document.title,
+      language: document.documentElement.lang,
+      feedback: '',
+      feedbackType: '',
+      reason: '',
+      selectedFeedback: '',
+      deviceType: deviceType(),
+      category: crumbs ? crumbs.innerText.trim() : ''
+    };
+    Object.keys(fields).forEach(function (k) { data[k] = fields[k]; });
+    var body = Object.keys(data).map(function (k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+    }).join('&');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', ENDPOINT, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    if (onDone) {
+      xhr.onload = function () { onDone(xhr.status === 200); };
+      xhr.onerror = function () { onDone(false); };
+    }
+    xhr.send(body);
+  }
+  function show(panel) {
+    [vote, yes, no, done].forEach(function (p) { p.hidden = p !== panel; });
+    error.hidden = true;
+  }
+  function finish(ok, button) {
+    if (ok) { show(done); return; }
+    if (button) button.disabled = false;
+    error.hidden = false;
+  }
+  function checkedReasons() {
+    return Array.prototype.filter.call(reasons, function (r) { return r.checked; })
+      .map(function (r) { return r.value; }).join(', ');
+  }
+
+  var up = vote.querySelector('.hc-vote--up');
+  var down = vote.querySelector('.hc-vote--down');
+  if (up) up.addEventListener('click', function () {
+    send({ feedbackType: 'Yes', selectedFeedback: 'Yes' });
+    show(yes);
+  });
+  if (down) down.addEventListener('click', function () {
+    send({ feedbackType: 'Not really', selectedFeedback: 'Not really' });
+    show(no);
+  });
+
+  /* Send buttons turn on once there's text in their comment box. */
+  Array.prototype.forEach.call(box.querySelectorAll('[data-feedback-text]'), function (text) {
+    var panel = text.closest('.hc-feedback, .hc-feedback__comment');
+    var button = panel.querySelector('[data-feedback-send]');
+    text.addEventListener('input', function () { button.disabled = !text.value.trim(); });
+  });
+
+  var confirm = no.querySelector('[data-feedback-confirm]');
+  var comment = no.querySelector('[data-feedback-comment]');
+  Array.prototype.forEach.call(reasons, function (r) {
+    r.addEventListener('change', function () {
+      var any = !!checkedReasons();
+      confirm.disabled = !any;
+      comment.disabled = !any;
+    });
+  });
+
+  confirm.addEventListener('click', function () {
+    confirm.disabled = true;
+    send({ feedbackType: 'Not Really', selectedFeedback: 'Not Really', reason: checkedReasons() },
+      function (ok) { finish(ok, confirm); });
+  });
+  comment.addEventListener('click', function () {
+    Array.prototype.forEach.call(reasons, function (r) { r.disabled = true; });
+    no.querySelector('[data-feedback-reason-actions]').hidden = true;
+    var commentBox = no.querySelector('[data-feedback-comment-box]');
+    commentBox.hidden = false;
+    commentBox.querySelector('textarea').focus();
+  });
+
+  yes.querySelector('[data-feedback-send]').addEventListener('click', function () {
+    var button = this;
+    button.disabled = true;
+    send({ feedbackType: 'Yes', feedback: yes.querySelector('textarea').value.trim() },
+      function (ok) { finish(ok, button); });
+  });
+  no.querySelector('[data-feedback-comment-box] [data-feedback-send]').addEventListener('click', function () {
+    var button = this;
+    button.disabled = true;
+    send({
+      feedbackType: 'Not Really', selectedFeedback: 'Not Really', reason: checkedReasons(),
+      feedback: no.querySelector('textarea').value.trim()
+    }, function (ok) { finish(ok, button); });
   });
 })();

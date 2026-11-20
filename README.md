@@ -48,6 +48,15 @@ These texts come from dynamic content (Admin Center > Workspaces > Dynamic conte
 | Search placeholder (all search boxes) | `search_placeholder` |
 | Popular searches (comma-separated, empty hides them) | `popular_searches` |
 
+## All other visible text (dynamic content)
+
+Every visible label in the templates comes from a dynamic content item (`{{dc 'key'}}`), so it is translated into all six languages. Nothing is hardcoded in English except brand names (Lodgify, Lodgify Academy).
+
+- New items use the `hc_` prefix in lowercase snake case, such as `hc_popular_articles`. Older items (`hccontactus`, `hcblog`, `hcarticles`, `cfselectanoption`...) are reused, not duplicated.
+- Text that `script.js` shows (card counts, "Back to", form messages and so on) is rendered into a hidden `data-hc-i18n` element in `footer.hbs`, with one `data-t-*` attribute per item. The script reads it with `hcT(key, englishFallback)`.
+- Not translated on purpose: the values sent to the feedback sheet (`Yes`, `Not really`, the reasons) and the ticket subject and description agents see.
+- Not covered yet: the `aria-label` texts (for example "Open menu"), the "Beta" tag, "(optional)" on form fields, "Results for", "Error" and the contact card sentence on the home page. These need new items.
+
 ## Sign-in help form
 
 The Help Center has one request form, only for people who can't sign in to Lodgify. It isn't linked anywhere in the Help Center. Link to it from the Lodgify sign-in page:
