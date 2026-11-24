@@ -339,6 +339,20 @@ window.hcT = function (key, fallback) {
     qsa('a[href^="http"]', body).forEach(function (a) {
       if (a.hostname !== location.hostname) a.setAttribute('rel', 'noopener');
     });
+
+    // Accordions: only one open at a time. Opening one closes the others
+    // (a box that holds the opened one stays open). toggle doesn't bubble, so listen while capturing.
+    body.addEventListener('toggle', function (e) {
+      var d = e.target;
+      if (!d || d.tagName !== 'DETAILS' || !d.open) return;
+      qsa('details[open]', body).forEach(function (o) {
+        if (o !== d && !o.contains(d) && !d.contains(o)) o.open = false;
+      });
+      // Boxes above may have collapsed and moved this one off screen.
+      requestAnimationFrame(function () {
+        if (d.getBoundingClientRect().top < 0) d.scrollIntoView({ block: 'start' });
+      });
+    }, true);
   }
 
   // Keep "More in this section" short.

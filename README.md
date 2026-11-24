@@ -57,6 +57,10 @@ Every visible label in the templates comes from a dynamic content item (`{{dc 'k
 - Not translated on purpose: the values sent to the feedback sheet (`Yes`, `Not really`, the reasons) and the ticket subject and description agents see.
 - Not covered yet: the `aria-label` texts (for example "Open menu"), the "Beta" tag, "(optional)" on form fields, "Results for", "Error" and the contact card sentence on the home page. These need new items.
 
+## Accordions
+
+Article `<details>` boxes (including `.callout-box` / `.feature-accordion`) show as rounded boxes with one chevron. Only one is open at a time: opening one closes the others, except a box that contains the one you opened. The logic is in `script.js` (article section), the styles in `style.css` under "Accordions".
+
 ## Sign-in help form
 
 The Help Center has one request form, only for people who can't sign in to Lodgify. It isn't linked anywhere in the Help Center. Link to it from the Lodgify sign-in page:
