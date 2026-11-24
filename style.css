@@ -625,6 +625,39 @@ body.hc-menu-open { overflow: hidden; }
 }
 .hc-article-body .alert a, .hc-article-body .callout a { color: inherit; }
 
+/* Accordions (<details>): a rounded box, one open at a time (see script.js).
+   Works for plain <details> and for the style guide's .callout-box / .feature-accordion. */
+.hc-article-body details {
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-400);
+  background: var(--bg); overflow: hidden; scroll-margin-top: 24px;
+}
+.hc-article-body > details + details { margin-top: -12px; }
+.hc-article-body details[open] { border-color: var(--border); }
+.hc-article-body details > summary {
+  display: flex; align-items: center; gap: 12px; padding: 16px 20px; cursor: pointer;
+  list-style: none; font-weight: 600; font-size: var(--fs-03); line-height: var(--lh-03);
+}
+.hc-article-body details > summary::-webkit-details-marker { display: none; }
+.hc-article-body details > summary:hover { background: var(--bg-subtle); }
+.hc-article-body details[open] > summary { background: var(--bg-subtle); border-bottom: 1px solid var(--border-subtle); }
+.hc-article-body details > summary:focus-visible { outline-offset: -2px; border-radius: var(--radius-400); }
+.hc-article-body details > summary > .callout-icon { flex: none; }
+.hc-article-body details > summary > .callout-text { flex: 1; min-width: 0; }
+/* One chevron for every accordion; the typed caret in the markup is hidden. */
+.hc-article-body details > summary > .callout-caret { display: none; }
+.hc-article-body details > summary::after {
+  content: ""; flex: none; width: 8px; height: 8px; margin: 0 4px 3px auto;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); transition: transform 0.2s ease;
+}
+.hc-article-body details[open] > summary::after { transform: rotate(-135deg); margin-bottom: -3px; }
+.hc-article-body details > :not(summary) { margin: 12px 20px 0; }
+.hc-article-body details > summary + * { margin-top: 16px; }
+.hc-article-body details > :not(summary):last-child { margin-bottom: 20px; }
+@media (prefers-reduced-motion: reduce) {
+  .hc-article-body details > summary::after { transition: none; }
+}
+
 .hc-attachments { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-02); }
 .hc-attachments a { display: inline-flex; align-items: center; gap: 8px; }
 .hc-attachments__size { color: var(--fg-subtle); margin-left: 6px; }
