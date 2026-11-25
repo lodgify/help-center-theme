@@ -128,7 +128,8 @@
       "24204054234652": "21669529691420",
       "28814526128028": "28812264375708",
       "25868216962972": "360010558559",
-      "360021627739": "31068088334876"
+      "360021627739": "31068088334876",
+      "24203855828636": "21668873823900"
     };
     var match = window.location.pathname.match(/^\/hc\/([a-z]{2}(?:-[a-z]{2})?)\/articles\/(\d+)/i);
     if (!match) return;
@@ -137,6 +138,31 @@
     if (target !== match[2]) {
       window.location.replace('/hc/' + match[1] + '/articles/' + target + window.location.hash);
     }
+  })();
+</script>
+<script>
+  /* Lowercase URLs: go to the capitalised canonical URL.
+     Covers article, section and category pages with no list: the page's own
+     canonical link says where to go. It only redirects when the two paths
+     are the same apart from capital letters (same language, type and ID). */
+  (function () {
+    function go() {
+      var link = document.querySelector('link[rel="canonical"]');
+      if (!link) return false;
+      var to;
+      try { to = new URL(link.href); } catch (e) { return true; }
+      var from = window.location.pathname;
+      if (to.pathname === from) return true;
+      if (!/^\/hc\/[a-z]{2}(?:-[a-z]{2})?\/(?:articles|sections|categories)\/\d+-/i.test(from)) return true;
+      var a, b;
+      try {
+        a = decodeURIComponent(from).toLowerCase();
+        b = decodeURIComponent(to.pathname).toLowerCase();
+      } catch (e) { return true; }
+      if (a === b) window.location.replace(to.pathname + window.location.search + window.location.hash);
+      return true;
+    }
+    if (!go()) document.addEventListener('DOMContentLoaded', go);
   })();
 </script>
 <script>
