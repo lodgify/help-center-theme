@@ -96,6 +96,7 @@ Without that form ID, `/requests/new` redirects to the Contact us article (see `
 ## Redirects (`document_head.hbs`)
 
 - **Article redirects**: a list of `"old article ID": "new article ID"` pairs. To add one, add a line to the list. Chains (A to B to C) go straight to the last article, and the visitor's language is kept.
+- **Lowercase URLs**: article, section and category URLs in lowercase go to the capitalised URL (from the SEO Canonicals list: 2,398 pages). One rule reads the page's own canonical link, so there is no list to keep. It is a JavaScript redirect, not a 301. Articles are already redirected by Zendesk itself.
 - **Request page**: `/requests/new` without the sign-in form ID goes to the Contact us link from the theme settings.
 
 ## Google Analytics
