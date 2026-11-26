@@ -57,6 +57,10 @@ Every visible label in the templates comes from a dynamic content item (`{{dc 'k
 - Not translated on purpose: the values sent to the feedback sheet (`Yes`, `Not really`, the reasons) and the ticket subject and description agents see.
 - Screen-reader labels (`aria-label`) are translated too, for example `hc_open_menu` and `hc_breadcrumb`.
 
+## Article banners
+
+The style guide's banners are styled in `style.css`: `.callout-premium-beta` (Beta, Premium and announcement) is a yellow banner, and `.callout-resources` (Linked resources) is a green one. Both use Garden colour tokens.
+
 ## Accordions
 
 Article `<details>` boxes (including `.callout-box` / `.feature-accordion`) show as rounded boxes with one chevron. Only one is open at a time: opening one closes the others, except a box that contains the one you opened. The logic is in `script.js` (article section), the styles in `style.css` under "Accordions".

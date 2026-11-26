@@ -10,6 +10,7 @@
   --black: #000000;
   --brand-300: #fffca3;
   --brand-500: #fff65b;
+  --gold-500: #e0b000; /* not in Garden: border of the yellow banner */
   --grey-100: #f7f7f7;
   --grey-200: #f2f2f2;
   --grey-300: #ebebeb;
@@ -624,6 +625,25 @@ body.hc-menu-open { overflow: hidden; }
   border-color: var(--error-500); background: var(--error-200); color: var(--error-1000);
 }
 .hc-article-body .alert a, .hc-article-body .callout a { color: inherit; }
+
+/* Banners from the KB style guide: Beta, Premium and announcement (yellow), Linked resources (green). */
+.hc-article-body .callout-premium-beta,
+.hc-article-body .callout-resources {
+  padding: 16px 20px; border: 1px solid; border-radius: var(--radius-400);
+  font-size: var(--fs-03); line-height: var(--lh-03);
+}
+.hc-article-body .callout-premium-beta {
+  border-width: 1px 0; border-radius: 0; border-color: var(--gold-500);
+  background: var(--brand-300); color: var(--fg-accent);
+}
+.hc-article-body .callout-resources {
+  border-width: 1px 0; border-radius: 0; border-color: var(--success-500);
+  background: var(--success-200); color: var(--success-1000);
+}
+.hc-article-body .callout-premium-beta > :last-child,
+.hc-article-body .callout-resources > :last-child { margin-bottom: 0; }
+.hc-article-body .callout-resources h3 { margin-bottom: 8px; font-size: var(--fs-04); line-height: var(--lh-03); }
+.hc-article-body .callout-resources ul { margin: 0; }
 
 /* Accordions (<details>): a rounded box, one open at a time (see script.js).
    Works for plain <details> and for the style guide's .callout-box / .feature-accordion. */
