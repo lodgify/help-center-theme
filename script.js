@@ -262,7 +262,7 @@ window.hcT = function (key, fallback) {
       var holder = t.parentNode;
       if (/\(?\bbeta\b\)?/i.test(txt)) {
         t.textContent = txt.replace(/\s*\(?\bbeta\b\)?/i, '').trim();
-        holder.appendChild(el('span', 'hc-tag hc-tag--upgrade', 'Beta'));
+        holder.appendChild(el('span', 'hc-tag hc-tag--upgrade', hcT('beta', 'Beta')));
       }
       if (/^\s*\(\s*legacy[^)]*\)\s*-?\s*/i.test(txt)) {
         t.textContent = txt.replace(/^\s*\(\s*legacy[^)]*\)\s*-?\s*/i, '').trim() || txt;
@@ -495,7 +495,7 @@ window.hcT = function (key, fallback) {
     var l = el(tag || 'label', 'hc-field__label');
     if (forId) l.htmlFor = forId;
     l.appendChild(doc.createTextNode(text));
-    if (!required) l.appendChild(el('span', 'hc-field__optional', ' (optional)'));
+    if (!required) l.appendChild(el('span', 'hc-field__optional', ' ' + hcT('optional', '(optional)')));
     return l;
   }
 

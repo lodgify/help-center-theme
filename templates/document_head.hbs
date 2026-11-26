@@ -43,31 +43,6 @@
 }
 </style>
 <script>
-  /* Lowercase URLs: go to the capitalised canonical URL.
-     Covers article, section and category pages with no list: the page's own
-     canonical link says where to go. It only redirects when the two paths
-     are the same apart from capital letters (same language, type and ID). */
-  (function () {
-    function go() {
-      var link = document.querySelector('link[rel="canonical"]');
-      if (!link) return false;
-      var to;
-      try { to = new URL(link.href); } catch (e) { return true; }
-      var from = window.location.pathname;
-      if (to.pathname === from) return true;
-      if (!/^\/hc\/[a-z]{2}(?:-[a-z]{2})?\/(?:articles|sections|categories)\/\d+-/i.test(from)) return true;
-      var a, b;
-      try {
-        a = decodeURIComponent(from).toLowerCase();
-        b = decodeURIComponent(to.pathname).toLowerCase();
-      } catch (e) { return true; }
-      if (a === b) window.location.replace(to.pathname + window.location.search + window.location.hash);
-      return true;
-    }
-    if (!go()) document.addEventListener('DOMContentLoaded', go);
-  })();
-</script>
-<script>
   /* The request form only opens from a link with the sign-in help form ID,
      for example /hc/en-us/requests/new?ticket_form_id=FORM_ID.
      Any other visit to /requests/new goes to the Contact us link. */

@@ -1,7 +1,7 @@
 <div class="hc-container hc-band-wrap">
   <section class="hc-band hc-band--stack hc-band--search">
     <h1 class="hc-display hc-display--lg">
-      {{#if results_count}}{{results_count}} results for{{else}}Results for{{/if}} &ldquo;{{query}}&rdquo;
+      {{#if results_count}}{{results_count}} {{dc 'hc_results_count_for'}}{{else}}{{dc 'hc_results_for'}}{{/if}} &ldquo;{{query}}&rdquo;
     </h1>
     <div class="hc-search-wrap hc-search-wrap--band hc-search-wrap--wide">
       {{search class='hc-search hc-search--band' placeholder=(dc 'search_placeholder')}}
@@ -10,7 +10,7 @@
 </div>
 
 <main class="hc-layout hc-container">
-  <aside class="hc-sidenav" aria-label="Filter results">
+  <aside class="hc-sidenav" aria-label="{{dc 'hc_filter_by_topic'}}">
     {{#if subfilters}}
     <h2 class="hc-eyebrow">{{dc 'hc_filter_by_topic'}}</h2>
     <ul class="hc-sidenav__list">

@@ -18,7 +18,8 @@
   data-t-form-choose-issue="{{dc 'hc_form_choose_issue'}}"
   data-t-form-required="{{dc 'hc_form_required'}}"
   data-t-form-invalid-email="{{dc 'hc_form_invalid_email'}}"
-  data-t-form-error="{{dc 'hc_form_error'}}"></div>
+  data-t-form-error="{{dc 'hc_form_error'}}"
+  data-t-beta="{{dc 'hc_beta'}}" data-t-optional="{{dc 'hc_optional'}}"></div>
 
 <footer class="hc-footer">
   <div class="hc-footer__panel">
@@ -46,7 +47,7 @@
           {{#if settings.blog_url}}<a href="{{settings.blog_url}}">{{dc 'hcblog'}}</a>{{/if}}
           {{#if settings.changelog_url}}<a href="{{settings.changelog_url}}">{{dc 'hc_announcements'}}</a>{{/if}}
         </nav>
-        <nav class="hc-footer__links" aria-label="Legal">
+        <nav class="hc-footer__links" aria-label="{{dc 'hc_legal'}}">
           {{#if settings.terms_url}}<a href="{{settings.terms_url}}">{{dc 'hc_terms'}}</a>{{/if}}
           {{#if settings.privacy_url}}<a href="{{settings.privacy_url}}">{{dc 'hc_privacy'}}</a>{{/if}}
           {{#if settings.cookies_url}}<a href="{{settings.cookies_url}}">{{dc 'hc_cookies'}}</a>{{/if}}
