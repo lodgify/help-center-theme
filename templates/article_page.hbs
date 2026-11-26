@@ -1,5 +1,5 @@
 <div class="hc-container hc-crumbs-wrap hc-crumbs-wrap--search">
-  <nav aria-label="Breadcrumb">
+  <nav aria-label="{{dc 'hc_breadcrumb'}}">
     {{breadcrumbs}}
   </nav>
   <div class="hc-search-wrap hc-search-wrap--band hc-search-wrap--article">
@@ -8,7 +8,7 @@
 </div>
 
 <main class="hc-layout hc-layout--article hc-container">
-  <nav class="hc-sidenav hc-desk-only" aria-label="Articles in this section">
+  <nav class="hc-sidenav hc-desk-only" aria-label="{{dc 'hc_in_this_section'}}">
     <h2 class="hc-eyebrow">{{dc 'hc_in_this_section'}}</h2>
     <ul class="hc-sidenav__list">
       {{#each section.articles}}
@@ -117,7 +117,7 @@
     {{/if}}
   </article>
 
-  <aside class="hc-toc-aside" aria-label="On this page">
+  <aside class="hc-toc-aside" aria-label="{{dc 'hc_on_this_page'}}">
     <div class="hc-toc" data-toc hidden>
       <h2 class="hc-eyebrow">{{dc 'hc_on_this_page'}}</h2>
       <ul class="hc-toc__list" data-toc-list></ul>

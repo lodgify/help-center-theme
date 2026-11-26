@@ -43,13 +43,13 @@
 
 <header class="hc-header" id="hc-header">
   <div class="hc-header__row hc-container">
-    <a class="hc-capsule hc-brand" href="{{page_path 'help_center'}}" aria-label="Lodgify Help Center home">
+    <a class="hc-capsule hc-brand" href="{{page_path 'help_center'}}" aria-label="{{dc 'hc_aria_home'}}">
       <svg class="hc-brand__logo" viewBox="0 0 76.113 20" width="84" height="22" role="img" aria-label="Lodgify"><use href="#logo-word"/></svg>
       <span class="hc-brand__divider" aria-hidden="true"></span>
       <span class="hc-brand__name">{{dc 'hc_help_center'}}</span>
     </a>
 
-    <nav class="hc-capsule hc-nav hc-desk" aria-label="Main">
+    <nav class="hc-capsule hc-nav hc-desk" aria-label="{{dc 'hc_main_navigation'}}">
       <a class="hc-nav__link" href="{{page_path 'help_center'}}#topics"><span data-kb-label>{{dc 'hcknowledgebase'}}</span></a>
       {{#if settings.use_cases_url}}<a class="hc-nav__link" href="{{settings.use_cases_url}}">{{dc 'hcquickguidestitle'}}</a>{{/if}}
     </nav>
@@ -57,7 +57,7 @@
     <div class="hc-capsule hc-actions hc-desk">
       {{#if alternative_locales}}
       <details class="hc-lang">
-        <summary class="hc-nav__link" aria-label="Change language">
+        <summary class="hc-nav__link" aria-label="{{dc 'hc_change_language'}}">
           <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-globe"/></svg>
           <span>{{current_locale.name}}</span>
           <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-angle-down"/></svg>
@@ -73,25 +73,25 @@
     </div>
 
     <div class="hc-capsule hc-mobile-actions hc-mob">
-      <a class="hc-icon-btn" href="{{page_path 'help_center'}}#hc-menu-search" data-open-menu="search" aria-label="Search the Help Center">
+      <a class="hc-icon-btn" href="{{page_path 'help_center'}}#hc-menu-search" data-open-menu="search" aria-label="{{dc 'hc_search_help_center'}}">
         <svg class="hc-icon" aria-hidden="true"><use href="#icon-search"/></svg>
       </a>
-      <button class="hc-icon-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="hc-menu" data-open-menu>
+      <button class="hc-icon-btn" type="button" aria-label="{{dc 'hc_open_menu'}}" aria-expanded="false" aria-controls="hc-menu" data-open-menu>
         <svg class="hc-icon" aria-hidden="true"><use href="#icon-bars"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<div class="hc-menu" id="hc-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="hc-menu" id="hc-menu" role="dialog" aria-modal="true" aria-label="{{dc 'hc_menu'}}" hidden>
   <div class="hc-menu__panel">
     <div class="hc-menu__top">
-      <a class="hc-menu__brand" href="{{page_path 'help_center'}}" aria-label="Lodgify Help Center home">
+      <a class="hc-menu__brand" href="{{page_path 'help_center'}}" aria-label="{{dc 'hc_aria_home'}}">
         <svg viewBox="0 0 76.113 20" width="76" height="20" role="img" aria-label="Lodgify"><use href="#logo-word"/></svg>
         <span class="hc-brand__divider" aria-hidden="true"></span>
         <span class="hc-brand__name">{{dc 'hc_help_center'}}</span>
       </a>
-      <button class="hc-icon-btn hc-icon-btn--onDark" type="button" aria-label="Close menu" data-close-menu>
+      <button class="hc-icon-btn hc-icon-btn--onDark" type="button" aria-label="{{dc 'hc_close_menu'}}" data-close-menu>
         <svg class="hc-icon" aria-hidden="true"><use href="#icon-close"/></svg>
       </button>
     </div>
@@ -100,7 +100,7 @@
       {{search class='hc-search hc-search--menu' placeholder='Search articles'}}
     </div>
 
-    <nav class="hc-menu__nav" aria-label="Main">
+    <nav class="hc-menu__nav" aria-label="{{dc 'hc_main_navigation'}}">
       <a href="{{page_path 'help_center'}}#topics" data-close-menu><span data-kb-label>{{dc 'hcknowledgebase'}}</span> <svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
       {{#if settings.use_cases_url}}<a href="{{settings.use_cases_url}}">{{dc 'hcquickguidestitle'}} <svg class="hc-icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>{{/if}}
     </nav>
@@ -109,7 +109,7 @@
       <div class="hc-menu__row">
         {{#if alternative_locales}}
         <details class="hc-lang hc-lang--menu">
-          <summary aria-label="Change language">
+          <summary aria-label="{{dc 'hc_change_language'}}">
             <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-globe"/></svg>
             <span>{{current_locale.name}}</span>
             <svg class="hc-icon hc-icon--sm" aria-hidden="true"><use href="#icon-angle-down"/></svg>

@@ -55,7 +55,7 @@ Every visible label in the templates comes from a dynamic content item (`{{dc 'k
 - New items use the `hc_` prefix in lowercase snake case, such as `hc_popular_articles`. Older items (`hccontactus`, `hcblog`, `hcarticles`, `cfselectanoption`...) are reused, not duplicated.
 - Text that `script.js` shows (card counts, "Back to", form messages and so on) is rendered into a hidden `data-hc-i18n` element in `footer.hbs`, with one `data-t-*` attribute per item. The script reads it with `hcT(key, englishFallback)`.
 - Not translated on purpose: the values sent to the feedback sheet (`Yes`, `Not really`, the reasons) and the ticket subject and description agents see.
-- Not covered yet: the `aria-label` texts (for example "Open menu"), the "Beta" tag, "(optional)" on form fields, "Results for", "Error" and the contact card sentence on the home page. These need new items.
+- Screen-reader labels (`aria-label`) are translated too, for example `hc_open_menu` and `hc_breadcrumb`.
 
 ## Accordions
 
@@ -96,7 +96,6 @@ Without that form ID, `/requests/new` redirects to the Contact us article (see `
 ## Redirects (`document_head.hbs`)
 
 - **Article redirects**: done in Zendesk, not in the theme. Archive the old article, then create redirect rules (a real 301 per language) with the `kb-redirect` skill or the Redirect Rules API (`/api/v2/guide/redirect_rules`). Nothing to add to the theme.
-- **Lowercase URLs**: article, section and category URLs in lowercase go to the capitalised URL (from the SEO Canonicals list: 2,398 pages). One rule reads the page's own canonical link, so there is no list to keep. It is a JavaScript redirect, not a 301. Articles are already redirected by Zendesk itself.
 - **Request page**: `/requests/new` without the sign-in form ID goes to the Contact us link from the theme settings.
 
 ## Google Analytics

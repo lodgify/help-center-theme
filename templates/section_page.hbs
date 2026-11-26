@@ -1,7 +1,7 @@
 <div class="hc-container hc-band-wrap">
   <section class="hc-band">
     <div class="hc-band__main">
-      <nav aria-label="Breadcrumb">
+      <nav aria-label="{{dc 'hc_breadcrumb'}}">
         {{breadcrumbs}}
       </nav>
       <h1 class="hc-display hc-display--xl">{{section.name}}</h1>
@@ -14,7 +14,7 @@
 </div>
 
 <main class="hc-layout hc-container">
-  <nav class="hc-sidenav hc-desk-only" aria-label="Sections" data-sections-nav data-current-section="{{section.id}}">
+  <nav class="hc-sidenav hc-desk-only" aria-label="{{dc 'hc_sections'}}" data-sections-nav data-current-section="{{section.id}}">
     <h2 class="hc-eyebrow" data-sections-title>{{dc 'hc_sections'}}</h2>
     <ul class="hc-sidenav__list" data-sections-list></ul>
   </nav>
